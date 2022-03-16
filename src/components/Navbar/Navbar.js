@@ -6,13 +6,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useStateContext } from "../../context/StateProvider";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ checkHome }) => {
+export const Navbar = ({ checkHome }) => {
   const { setShowMenu, cart, wishlist } = useStateContext();
 
   return (
-    <nav
-      className={`${checkHome === "/" ? "navbar" : "navbar staticNav"}`}
-    >
+    <nav className={`${checkHome === "/" ? "navbar" : "navbar staticNav"}`}>
       <div className="nav">
         <GiHamburgerMenu
           onClick={() => setShowMenu(true)}
@@ -66,12 +64,10 @@ const Navbar = ({ checkHome }) => {
         </li>
         <lib className="link-item">
           <Link className="link" to="/product-listing">
-            Women
+            Men
           </Link>
         </lib>
       </ul>
     </nav>
   );
 };
-
-export default Navbar;

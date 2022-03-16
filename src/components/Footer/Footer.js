@@ -3,7 +3,7 @@ import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import "./footer.css";
 
-function Footer() {
+export const Footer = () => {
   return (
     <footer>
       <a href="https://twitter.com/partha_sarma8">
@@ -20,6 +20,4 @@ function Footer() {
       </a>
     </footer>
   );
-}
-
-export default Footer;
+};
