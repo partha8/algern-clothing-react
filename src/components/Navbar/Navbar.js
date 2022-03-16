@@ -11,10 +11,9 @@ const Navbar = ({ checkHome }) => {
 
   return (
     <nav
-      id="navbar"
       className={`${checkHome === "/" ? "navbar" : "navbar staticNav"}`}
     >
-      <div id="nav" className="nav">
+      <div className="nav">
         <GiHamburgerMenu
           onClick={() => setShowMenu(true)}
           className="hamburger"
@@ -59,7 +58,7 @@ const Navbar = ({ checkHome }) => {
           <FaSearch />
         </div>
       </div>
-      <ul id="links-container" className="links-container">
+      <ul className="links-container">
         <li className="link-item">
           <Link className="link" to="/product-listing">
             Women
