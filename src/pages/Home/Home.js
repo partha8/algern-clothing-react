@@ -6,7 +6,7 @@ import "./home.css";
 export const Home = () => {
   return (
     <>
-      <div className={`parallax-wrapper`}>
+      <div className="parallax-wrapper">
         <Navbar checkHome={"/"} />
         <header className="parallax-group header">
           <header className="parallax-layer base-layer">
