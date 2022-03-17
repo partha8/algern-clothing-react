@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Navbar, Footer } from "../../components";
 
 import "./home.css";
@@ -32,7 +33,8 @@ export const Home = () => {
           </section>
 
           <section className="collection-container">
-            <a href="#" className="collection">
+            <Link className="collection" to="/product-listing">
+              {" "}
               <img
                 className="collection-img"
                 src="https://images.pexels.com/photos/3151296/pexels-photo-3151296.jpeg?cs=srgb&dl=pexels-marlon-schmeiski-3151296.jpg&fm=jpg"
@@ -41,8 +43,8 @@ export const Home = () => {
               <h1 className="collection-title">
                 women <br /> apparels
               </h1>
-            </a>
-            <a href="#" className="collection">
+            </Link>
+            <Link to="/product-listing" className="collection">
               <img
                 className="collection-img"
                 src="https://images.pexels.com/photos/9208222/pexels-photo-9208222.jpeg?cs=srgb&dl=pexels-cottonbro-9208222.jpg&fm=jpg"
@@ -51,8 +53,8 @@ export const Home = () => {
               <h1 className="collection-title">
                 men <br /> apparels
               </h1>
-            </a>
-            <a href="#" className="collection">
+            </Link>
+            <Link to="/product-listing" className="collection">
               <img
                 className="collection-img"
                 src="https://images.pexels.com/photos/6147408/pexels-photo-6147408.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
@@ -61,7 +63,7 @@ export const Home = () => {
               <h1 className="collection-title">
                 new outerwear <br /> collection
               </h1>
-            </a>
+            </Link>
           </section>
         </main>
         <Footer />
