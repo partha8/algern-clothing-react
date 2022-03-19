@@ -26,12 +26,19 @@ const StateProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    axios.get("/api/products").then((response) => {
-      productsDispatch({
-        type: "SET_PRODUCTS",
-        payload: response.data.products,
-      });
-    });
+    (async () => {
+      try {
+        const response = await axios.get("/api/products");
+        if (response.status === 200) {
+          productsDispatch({
+            type: "SET_PRODUCTS",
+            payload: response.data.products,
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }, []);
 
   return (
