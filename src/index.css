@@ -19,7 +19,7 @@
 
   --transition-one: all 0.4s linear;
   --transition-two: 0.3s ease-in-out all;
-  --border-radius: 10px;
+  --borderRadius: 10px;
   --letterSpacing: 1px;
   --max-width: 1120px;
   --fixed-width: 500px;
