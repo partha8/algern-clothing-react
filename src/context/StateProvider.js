@@ -1,5 +1,13 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
-import { productReducer } from "../reducers/productReducer";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+  useEffect,
+} from "react";
+
+import axios from "axios";
+import { productsReducer } from "../reducers/productsReducer";
 
 const StateContext = createContext();
 
@@ -9,13 +17,22 @@ const StateProvider = ({ children }) => {
   const initialProductState = {
     cart: [],
     wishlist: [],
-    productList: [],
+    productsList: [],
   };
 
-  const [{ cart, wishlist, productList }, productDispatch] = useReducer(
-    productReducer,
+  const [{ cart, wishlist, productsList }, productsDispatch] = useReducer(
+    productsReducer,
     initialProductState
   );
+
+  useEffect(() => {
+    axios.get("/api/products").then((response) => {
+      productsDispatch({
+        type: "SET_PRODUCTS",
+        payload: response.data.products,
+      });
+    });
+  }, []);
 
   return (
     <StateContext.Provider
@@ -23,10 +40,10 @@ const StateProvider = ({ children }) => {
         showMenu,
         cart,
         wishlist,
-        productList,
+        productsList,
 
         setShowMenu,
-        productDispatch,
+        productsDispatch,
       }}
     >
       {children}
