@@ -14,7 +14,6 @@ export const Card = ({
 }) => {
   let navigate = useNavigate();
   let location = useLocation();
-//   console.log(location, "from card component");
 
   const { productsDispatch } = useStateContext();
   return (
