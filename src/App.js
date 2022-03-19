@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Submenu } from "./components/index";
 import { Home } from "./pages";
+import Mockman from "mockman-js";
 
 // import { ForgotPassword, Login, SignUp } from "./pages/AuthPages/";
 
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} /> */}
+          <Route path="/mock" element={<Mockman />} />
         </Routes>
       </Router>
     </>
