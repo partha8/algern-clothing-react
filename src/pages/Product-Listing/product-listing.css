@@ -1,0 +1,56 @@
+.product-listing {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.card {
+  box-shadow: var(--light-shadow);
+  width: inherit;
+  height: min-content;
+  background: none;
+}
+
+.image-container-vert {
+  height: auto;
+}
+
+.wishlist-icon-vert {
+  top: 1rem;
+}
+
+.product-image {
+  object-position: top;
+}
+
+.cta-btn button {
+  background: var(--primary-color);
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+.cta-btn button:hover {
+  background: var(--primary-color-a5);
+}
+
+.cta-btn button:active {
+  background: var(--primary-color);
+}
+
+.vertical-text {
+  line-height: normal;
+  margin: 0;
+}
