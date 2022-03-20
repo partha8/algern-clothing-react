@@ -1,21 +1,23 @@
 import React from "react";
 import { Navbar } from "../../components";
 import { useStateContext } from "../../context/StateProvider";
-// import { Filters } from "./Filters/Filters";
+import { Filters } from "./Filters/Filters";
 import "./product-listing.css";
 import { Card } from "../../components/Card/Card";
 
+import { useFilteredProducts } from "../../hooks/useFilteredProducts";
+
 export const ProductListing = () => {
   const { productsList } = useStateContext();
-
+  const filteredData = useFilteredProducts(productsList);
   return (
     <>
       <Navbar />
       <h3 className="text-center">Shop Our Collection </h3>
       <div className="product-listing">
-        {/* <Filters /> */}
+        <Filters />
         <div className="products">
-          {productsList.map((product) => {
+          {filteredData.map((product) => {
             return <Card key={product.id} {...product} />;
           })}
         </div>

@@ -7,7 +7,15 @@ import { useStateContext } from "../../context/StateProvider";
 import { Link } from "react-router-dom";
 
 export const Navbar = ({ checkHome }) => {
-  const { setShowMenu, cart, wishlist } = useStateContext();
+  const {
+    setShowMenu,
+    cart,
+    wishlist,
+    categories,
+    filterDispatch,
+    productsList,
+    productsDispatch,
+  } = useStateContext();
 
   return (
     <nav className={`${checkHome === "/" ? "navbar" : "navbar staticNav"}`}>
@@ -57,16 +65,25 @@ export const Navbar = ({ checkHome }) => {
         </div>
       </div>
       <ul className="links-container">
-        <li className="link-item">
-          <Link className="link" to="/product-listing">
-            Women
-          </Link>
-        </li>
-        <lib className="link-item">
-          <Link className="link" to="/product-listing">
-            Men
-          </Link>
-        </lib>
+        {categories.map((item) => {
+          const { categoryName } = item;
+          return (
+            <li className="link-item">
+              <Link
+                className="link"
+                to="/product-listing"
+                onClick={() =>
+                  filterDispatch({
+                    type: "SORT_BY_CATEGORY",
+                    payload: categoryName,
+                  })
+                }
+              >
+                {categoryName}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
