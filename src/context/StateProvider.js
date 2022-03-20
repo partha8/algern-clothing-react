@@ -8,6 +8,7 @@ import React, {
 
 import axios from "axios";
 import { productsReducer } from "../reducers/productsReducer";
+import { filterReducer } from "../reducers/filterReducer";
 
 const StateContext = createContext();
 
@@ -18,12 +19,23 @@ const StateProvider = ({ children }) => {
     cart: [],
     wishlist: [],
     productsList: [],
+    categories: [],
   };
 
-  const [{ cart, wishlist, productsList }, productsDispatch] = useReducer(
-    productsReducer,
-    initialProductState
-  );
+  const initialFilterState = {
+    sortByPrice: null,
+    sortByCategory: null,
+    productTypesArray: [],
+    ratingInput: 5,
+  };
+
+  const [{ cart, wishlist, productsList, categories }, productsDispatch] =
+    useReducer(productsReducer, initialProductState);
+
+  const [
+    { sortByPrice, sortByCategory, productTypesArray, ratingInput },
+    filterDispatch,
+  ] = useReducer(filterReducer, initialFilterState);
 
   useEffect(() => {
     (async () => {
@@ -32,7 +44,23 @@ const StateProvider = ({ children }) => {
         if (response.status === 200) {
           productsDispatch({
             type: "SET_PRODUCTS",
-            payload: response.data.products,
+            payload: { products: response.data.products, sortByCategory },
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [sortByCategory]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/api/categories");
+        if (response.status === 200) {
+          productsDispatch({
+            type: "SET_CATEGORIES",
+            payload: response.data.categories,
           });
         }
       } catch (error) {
@@ -48,9 +76,16 @@ const StateProvider = ({ children }) => {
         cart,
         wishlist,
         productsList,
+        categories,
+
+        sortByPrice,
+        sortByCategory,
+        productTypesArray,
+        ratingInput,
 
         setShowMenu,
         productsDispatch,
+        filterDispatch,
       }}
     >
       {children}

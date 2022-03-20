@@ -2,6 +2,7 @@ import React from "react";
 import { useStateContext } from "../../context/StateProvider";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
+import "./card.css";
 
 export const Card = ({
   id,
@@ -41,7 +42,7 @@ export const Card = ({
           </small>
           <p>
             {name} <br />
-            Rs.{price.original} <br />
+            Rs.{price} <br />
           </p>
         </div>
         <div className="btn-container cta-btn">
