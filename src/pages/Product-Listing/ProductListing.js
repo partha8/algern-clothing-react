@@ -3,7 +3,7 @@ import { Navbar } from "../../components";
 import { useStateContext } from "../../context/StateProvider";
 import { Filters } from "./Filters/Filters";
 import "./product-listing.css";
-import { Card } from "../../components/Card/Card";
+import { Card } from "../../components";
 
 import { useFilteredProducts } from "../../hooks/useFilteredProducts";
 
