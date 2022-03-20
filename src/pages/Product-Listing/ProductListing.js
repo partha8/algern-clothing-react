@@ -4,10 +4,7 @@ import { useStateContext } from "../../context/StateProvider";
 import { Filters } from "./Filters/Filters";
 import "./product-listing.css";
 import { Card } from "../../components/Card/Card";
-import {
-  getFilteredData,
-  getSortedByPriceData,
-} from "../../functionUtils/filterUtils";
+
 import { useFilteredProducts } from "../../hooks/useFilteredProducts";
 
 export const ProductListing = () => {
