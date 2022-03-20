@@ -73,7 +73,7 @@ export const Filters = () => {
                 }
                 type="radio"
                 name="price-sort"
-                checked={sortByPrice}
+                checked={sortByPrice === "HIGH_TO_LOW"}
               />
               High to Low
             </label>
@@ -87,6 +87,7 @@ export const Filters = () => {
                 }
                 type="radio"
                 name="price-sort"
+                checked={sortByPrice === "LOW_TO_HIGH"}
               />
               Low to High
             </label>
