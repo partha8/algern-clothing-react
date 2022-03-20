@@ -7,6 +7,7 @@ export const useFilteredProducts = (productsList) => {
   if (sortByPrice && sortByPrice === "HIGH_TO_LOW") {
     newProductsList = newProductsList.sort((a, b) => b["price"] - a["price"]);
   }
+
   if (sortByPrice && sortByPrice === "LOW_TO_HIGH") {
     newProductsList = newProductsList.sort((a, b) => a["price"] - b["price"]);
   }
@@ -16,8 +17,10 @@ export const useFilteredProducts = (productsList) => {
       return productTypesArray.includes(product.productType);
     });
   }
+
   newProductsList = newProductsList.filter(
     (product) => parseInt(product.rating) < parseInt(ratingInput)
   );
+  
   return [...newProductsList];
 };

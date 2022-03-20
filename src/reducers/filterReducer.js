@@ -5,24 +5,28 @@ export const filterReducer = (state, action) => {
         ...state,
         sortByPrice: action.payload,
       };
+
     case "SORT_BY_CATEGORY": {
       return {
         ...state,
         sortByCategory: action.payload,
       };
     }
+
     case "SET_PRODUCT_TYPE": {
       return {
         ...state,
         productTypesArray: action.payload,
       };
     }
+
     case "SET_RATING": {
       return {
         ...state,
         ratingInput: action.payload,
       };
     }
+
     case "CLEAR_FILTERS": {
       return {
         ...state,
@@ -31,6 +35,7 @@ export const filterReducer = (state, action) => {
         ratingInput: 5,
       };
     }
+
     default:
       return state;
   }

@@ -10,12 +10,14 @@ export const productsReducer = (state, action) => {
         productsList: newProductsList,
       };
     }
+
     case "SET_CATEGORIES": {
       return {
         ...state,
         categories: [...action.payload],
       };
     }
+    
     default:
       return state;
   }
