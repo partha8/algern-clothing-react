@@ -152,17 +152,6 @@ export const SignUp = () => {
               <span>{error}</span>
             </div>
 
-            {/* <div>
-              <label className="auth-label" for="show-password">
-                Show Password
-              </label>
-              <input
-                id="show-password"
-                className="show-password"
-                type="checkbox"
-              />
-            </div> */}
-
             <button type="submit" className="btn btn-form-action">
               Get Started
             </button>

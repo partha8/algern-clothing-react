@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         navigate("/profile");
       }
     } catch (error) {
+      toastHandler(true, "Error, check console", "error");
       console.error(error);
     }
   };
@@ -60,8 +61,6 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
-
-      // console.log(response.data);
 
       if (response.status === 201) {
         const loginResp = await axios.post("api/auth/login", {
@@ -90,6 +89,7 @@ export const AuthProvider = ({ children }) => {
         }
       }
     } catch (error) {
+      toastHandler(true, "Error,check console", "error");
       console.error(error);
     }
   };
