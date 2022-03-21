@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import { useStateContext } from "../../context/StateProvider";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthProvider";
 
 export const Navbar = ({ checkHome }) => {
   const {
@@ -17,6 +18,7 @@ export const Navbar = ({ checkHome }) => {
     productsDispatch,
   } = useStateContext();
 
+  const { userState } = useAuthContext();
   return (
     <nav className={`${checkHome === "/" ? "navbar" : "navbar staticNav"}`}>
       <div className="nav">
@@ -40,9 +42,16 @@ export const Navbar = ({ checkHome }) => {
         </div>
 
         <div className="nav-items">
-          <Link to="/login">
-            <FaUserAlt />
-          </Link>
+          {userState._id ? (
+            <Link to="/profile">
+              <FaUserAlt />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <FaUserAlt />
+            </Link>
+          )}
+
           <Link className="container-badge icon-container" to="/cart">
             <FaShoppingBag />
             <span

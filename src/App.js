@@ -1,27 +1,41 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Submenu } from "./components/index";
-import { Home, ProductListing } from "./pages";
+import { Routes, Route } from "react-router-dom";
+import { Submenu, Toast } from "./components/index";
+import { Home, ProductListing, Profile } from "./pages";
 import Mockman from "mockman-js";
 
-// import { ForgotPassword, Login, SignUp } from "./pages/AuthPages/";
+import { Login, SignUp } from "./pages/AuthPages/";
+
+import { useStateContext } from "./context/StateProvider";
+
+import { useGetCategories, useGetProducts } from "./hooks/";
+import { useAuthContext } from "./context/AuthProvider";
 
 export const App = () => {
+  const { toast } = useStateContext();
+  const { userState } = useAuthContext();
+  useGetProducts();
+  useGetCategories();
   return (
     <>
-      <Router>
-        <Submenu />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/product-listing" element={<ProductListing />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/cart" element={<Cart />} />
+      <Submenu />
+      {toast.showToast && <Toast />}
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/product-listing" element={<ProductListing />} />
+
+        {userState._id ? (
+          <Route path="/profile" element={<Profile />} />
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </>
+        )}
+        {/* <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} /> */}
-          <Route path="/mock" element={<Mockman />} />
-        </Routes>
-      </Router>
+        <Route path="/mock" element={<Mockman />} />
+      </Routes>
     </>
   );
 };

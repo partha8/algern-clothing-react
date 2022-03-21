@@ -1,0 +1,16 @@
+.cta-btn {
+  background: var(--primary-color);
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+.cta-btn:hover {
+  background: var(--primary-color-a5);
+}
+
+.cta-btn:active {
+  background: var(--primary-color);
+}
