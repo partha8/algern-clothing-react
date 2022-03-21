@@ -3,18 +3,29 @@ import React, {
   useContext,
   useReducer,
   useState,
-  useEffect,
 } from "react";
 
-import axios from "axios";
 import { productsReducer } from "../reducers/productsReducer";
 import { filterReducer } from "../reducers/filterReducer";
 
 const StateContext = createContext();
 
 const StateProvider = ({ children }) => {
+  // for submenu, responsive navbar
   const [showMenu, setShowMenu] = useState(false);
 
+  // for toast
+  const [toast, setToast] = useState({
+    showToast: false,
+    message: "",
+    type: "",
+  });
+
+  const toastHandler = (showToast = false, message = "", type = "") => {
+    setToast({ showToast, message, type });
+  };
+
+  // initial states for product related states
   const initialProductState = {
     cart: [],
     wishlist: [],
@@ -22,6 +33,7 @@ const StateProvider = ({ children }) => {
     categories: [],
   };
 
+  // inital filter states
   const initialFilterState = {
     sortByPrice: null,
     sortByCategory: null,
@@ -37,38 +49,6 @@ const StateProvider = ({ children }) => {
     filterDispatch,
   ] = useReducer(filterReducer, initialFilterState);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get("/api/products");
-        if (response.status === 200) {
-          productsDispatch({
-            type: "SET_PRODUCTS",
-            payload: { products: response.data.products, sortByCategory },
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [sortByCategory]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get("/api/categories");
-        if (response.status === 200) {
-          productsDispatch({
-            type: "SET_CATEGORIES",
-            payload: response.data.categories,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
   return (
     <StateContext.Provider
       value={{
@@ -83,9 +63,12 @@ const StateProvider = ({ children }) => {
         productTypesArray,
         ratingInput,
 
+        toast,
+
         setShowMenu,
         productsDispatch,
         filterDispatch,
+        toastHandler,
       }}
     >
       {children}

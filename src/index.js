@@ -4,15 +4,22 @@ import "./index.css";
 import { App } from "./App";
 import { makeServer } from "./server";
 import { StateProvider } from "./context/StateProvider";
+import { AuthProvider } from "./context/AuthProvider";
+import { BrowserRouter as Router } from "react-router-dom";
 
 // Call make Server
 makeServer();
+// useSignupHandler()
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider>
-      <App />
-    </StateProvider>
+    <Router>
+      <AuthProvider>
+        <StateProvider>
+          <App />
+        </StateProvider>
+      </AuthProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
