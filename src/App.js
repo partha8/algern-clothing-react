@@ -8,7 +8,12 @@ import { Login, SignUp } from "./pages/AuthPages/";
 
 import { useStateContext } from "./context/StateProvider";
 
-import { useGetCategories, useGetProducts } from "./hooks/";
+import {
+  useGetCategories,
+  useGetProducts,
+  useGetWishlist,
+  useSignup,
+} from "./hooks/";
 import { useAuthContext } from "./context/AuthProvider";
 
 import { PrivateRoute } from "./routes/PrivateRoute";
@@ -18,6 +23,8 @@ export const App = () => {
   const { userState } = useAuthContext();
   useGetProducts();
   useGetCategories();
+  useGetWishlist();
+  useSignup();
   return (
     <>
       <Submenu />
