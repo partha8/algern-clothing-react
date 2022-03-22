@@ -1,38 +1,41 @@
 import React from "react";
 import { useStateContext } from "../../context/StateProvider";
 import { FaHeart } from "react-icons/fa";
+import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./card.css";
 
-export const Card = ({
-  id,
-  name,
-  price,
-  marker,
-  image,
-  addedToWishlist,
-  addedToCart,
-}) => {
+export const Card = (product, removeFromWishlist) => {
+  const { _id, name, price, marker, image, addedToWishlist, addedToCart } =
+    product;
   let navigate = useNavigate();
   let location = useLocation();
 
-  const { productsDispatch } = useStateContext();
+  const addToWishlist = () => {};
+  const addToCart = () => {};
+
   return (
-    <div key={id} className="card card-vertical">
+    <div key={_id} className="card card-vertical">
       <div className="image-container-vert">
         <img
           className="img responsive-image product-image"
           src={image.src}
           alt={image.alt}
         />
-        <FaHeart
-          onClick={() =>
-            productsDispatch({ type: "WISHLIST_UPDATE", payload: id })
-          }
-          className={`wishlist-icon-vert ${
-            addedToWishlist ? "wishlisted" : ""
-          }`}
-        />
+
+        {location.pathname === "/wishlist" ? (
+          <BsFillTrashFill
+            onClick={() => removeFromWishlist(product)}
+            className="trash"
+          />
+        ) : (
+          <FaHeart
+            onClick={() => addToWishlist(product)}
+            className={`wishlist-icon-vert ${
+              addedToWishlist ? "wishlisted" : ""
+            }`}
+          />
+        )}
       </div>
       <div className="text-btn-container">
         <div className="text-container vertical-text">
@@ -49,7 +52,7 @@ export const Card = ({
           {!addedToCart ? (
             <button
               onClick={() =>
-                productsDispatch({ type: "CART_UPDATE", payload: id })
+                addToCart(product)
               }
               className="btn btn-primary-solid"
             >
