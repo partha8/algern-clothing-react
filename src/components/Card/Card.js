@@ -11,7 +11,7 @@ import {
 } from "../../utils/productUtils";
 
 export const Card = (product) => {
-  const { _id, name, price, marker, image, id } = product;
+  const { _id, name, price, marker, image } = product;
 
   let navigate = useNavigate();
   let location = useLocation();
