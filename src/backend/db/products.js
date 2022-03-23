@@ -12,7 +12,7 @@ export const products = [
     marker: "Essentials",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/tshirts/orange.jpeg?token=GHSAT0AAAAAABQCBSCCBC53B5SSHTHERBZQYR3ANWA",
+      src: "https://live.staticflickr.com/65535/51956317341_fbd4785483_z.jpg",
       alt: "regular fit tshirt",
     },
 
@@ -32,7 +32,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/tshirts/oversize.jpeg?token=GHSAT0AAAAAABQCBSCD2JCYVBZF2QHGQAY2YR3AOTA",
+      src: "https://live.staticflickr.com/65535/51956317296_38153e7b65_z.jpg",
       alt: "oversize tshirt",
     },
 
@@ -52,7 +52,7 @@ export const products = [
     marker: "Essentials",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/tshirts/printed-1.jpeg?token=GHSAT0AAAAAABQCBSCDR3GD7FJUBA3TINJIYR3AO5Q",
+      src: "https://live.staticflickr.com/65535/51955325067_b5ff7b481b_z.jpg",
       alt: "printed tshirt",
     },
 
@@ -71,7 +71,7 @@ export const products = [
     marker: "Essentials",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/tshirts/printed-2.jpeg?token=GHSAT0AAAAAABQCBSCDUJDQWWYKJSVOKPXQYR3APIA",
+      src: "https://live.staticflickr.com/65535/51956317261_cbd0088b84_z.jpg",
       alt: "printed-2 tshirt",
     },
 
@@ -92,7 +92,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/shirts/shirt-1.jpeg?token=GHSAT0AAAAAABQCBSCDJT7MK5DZSVYZZJGAYR3APSA",
+      src: "https://live.staticflickr.com/65535/51956612639_1c77fe7901_z.jpg",
       alt: "regular fit shirt",
     },
 
@@ -111,7 +111,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/shirts/shirt-2.jpeg?token=GHSAT0AAAAAABQCBSCDXZQWNP5VVALJC4YEYR3AP2Q",
+      src: "https://live.staticflickr.com/65535/51956317211_29243e96c7_z.jpg",
       alt: "regular fit shirt",
     },
 
@@ -130,7 +130,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/shirts/shirt-3.jpeg?token=GHSAT0AAAAAABQCBSCC3O5EDP74MCRV5IWKYR3AQFQ",
+      src: "https://live.staticflickr.com/65535/51956379163_1a0f9fc32e_z.jpg",
       alt: "patterned shirt",
     },
 
@@ -149,7 +149,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/shirts/shirt-4.jpeg?token=GHSAT0AAAAAABQCBSCCNOHIZSJ6XYD45YM2YR3AQNQ",
+      src: "https://live.staticflickr.com/65535/51956317151_b4d7a16752_z.jpg",
       alt: "patterned shirt",
     },
 
@@ -170,7 +170,7 @@ export const products = [
     marker: "essentials",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/hoodies/hoodie-1.jpeg?token=GHSAT0AAAAAABQCBSCC3ZXLRAMMUHKP3C6CYR3AQYA",
+      src: "https://live.staticflickr.com/65535/51956867270_087ff3b29c_z.jpg",
       alt: "Relaxed Fit hoodie",
     },
 
@@ -189,7 +189,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/hoodies/hoodie-2.jpeg?token=GHSAT0AAAAAABQCBSCCN4JTT4C2LY6M55XQYR3ARAQ",
+      src: "https://live.staticflickr.com/65535/51956576059_e2bcd6e133_z.jpg",
       alt: "Relaxed Fit Printed hoodie",
     },
 
@@ -208,7 +208,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/hoodies/hoodie-3.jpeg?token=GHSAT0AAAAAABQCBSCCMFKG7Q3NJQCUZVB6YR3ARIQ",
+      src: "https://live.staticflickr.com/65535/51956576039_da5c92cf38_z.jpg",
       alt: "regular fit hoodie",
     },
 
@@ -227,7 +227,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/hoodies/hoodie-4.jpeg?token=GHSAT0AAAAAABQCBSCCKR6JQTMGHE3DXAPGYR3ARRA",
+      src: "https://live.staticflickr.com/65535/51956280076_4189f51175_z.jpg",
       alt: "Relaxed Fit Hoodie",
     },
 
@@ -246,7 +246,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/men/hoodies/hoodie-5.jpeg?token=GHSAT0AAAAAABQCBSCCBCNSSV6PSPQGPW4WYR3ARYQ",
+      src: "https://live.staticflickr.com/65535/51956342618_9c1ff2c8af_z.jpg",
       alt: "Relaxed Fit Hoodie",
     },
 
@@ -269,7 +269,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/dresses/dress-1.jpeg?token=GHSAT0AAAAAABQCBSCC7HBJ4NI7YQEYUDBEYR3B67A",
+      src: "https://live.staticflickr.com/65535/51956379448_9b02ff4f38_z.jpg",
       alt: "tshirt dress",
     },
 
@@ -288,7 +288,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/dresses/dress-2.jpeg?token=GHSAT0AAAAAABQCBSCCQZ5TPD3BIHOGUBTIYR3B7MA",
+      src: "https://live.staticflickr.com/65535/51955325277_5461721098_z.jpg",
       alt: "Floral puff-sleeved dress",
     },
 
@@ -307,7 +307,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/dresses/dress-3.jpeg?token=GHSAT0AAAAAABQCBSCCMVXN23UBGJ45SQL2YR3CDDA",
+      src: "https://live.staticflickr.com/65535/51956379433_f73bf759c8_z.jpg",
       alt: "V-neck dress",
     },
 
@@ -326,7 +326,7 @@ export const products = [
     marker: "",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/dresses/dress-4.jpeg?token=GHSAT0AAAAAABQCBSCCEVDRBVFHPHV3IEVMYR3CEIA",
+      src: "https://live.staticflickr.com/65535/51955325252_ee73ed3444_z.jpg",
       alt: "wide dress",
     },
 
@@ -347,7 +347,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/hoodies/hoodie-1.jpeg?token=GHSAT0AAAAAABQCBSCCXL5NJI2GSJE5YHI6YR3CHQQ",
+      src: "https://live.staticflickr.com/65535/51956612954_3de7a8bacf_z.jpg",
       alt: "sweatshirt",
     },
 
@@ -366,7 +366,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/hoodies/hoodie-2.jpeg?token=GHSAT0AAAAAABQCBSCDBXTWBDJYYT6WUHJSYR3CKKA",
+      src: "https://live.staticflickr.com/65535/51956904250_5cf219b28e_z.jpg",
       alt: "sweatshirt",
     },
 
@@ -385,7 +385,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/hoodies/hoodie-4.jpeg?token=GHSAT0AAAAAABQCBSCCGDVWELYJMZ447NYMYR3CM4A",
+      src: "https://live.staticflickr.com/65535/51955325377_a6e8c1c101_z.jpg",
       alt: "printed sweatshirt",
     },
 
@@ -406,7 +406,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/tops/top-1.jpeg?token=GHSAT0AAAAAABQCBSCCMSVPYG3MDT7YYVQIYR3CVTA",
+      src: "https://live.staticflickr.com/65535/51955325602_eca310e943_z.jpg",
       alt: "ribbed top",
     },
 
@@ -425,7 +425,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/tops/top-3.jpeg?token=GHSAT0AAAAAABQCBSCD36AOCGT56XIX3Y4GYR3CXLQ",
+      src: "https://live.staticflickr.com/65535/51956379698_5609091562_z.jpg",
       alt: "ribbed top",
     },
 
@@ -444,7 +444,7 @@ export const products = [
     marker: "Conscious choice",
 
     image: {
-      src: "https://raw.githubusercontent.com/partha8/ecommerce-photos/main/women/tops/top-4.jpeg?token=GHSAT0AAAAAABQCBSCCIVH74WJ6KVJCTQZWYR3CX2Q",
+      src: "https://live.staticflickr.com/65535/51955325557_e7065a565f_z.jpg",
       alt: "cotton t-shirt",
     },
 
