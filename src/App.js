@@ -12,7 +12,7 @@ import {
   useGetCategories,
   useGetProducts,
   useGetWishlist,
-  useSignup,
+  // useSignup,
 } from "./hooks/";
 import { useAuthContext } from "./context/AuthProvider";
 
@@ -24,7 +24,7 @@ export const App = () => {
   useGetProducts();
   useGetCategories();
   useGetWishlist();
-  useSignup();
+  // useSignup();
   return (
     <>
       <Submenu />

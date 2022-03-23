@@ -4,15 +4,17 @@ import { FaHeart } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./card.css";
+import { removeFromWishlist, addToWishlist,addToCart } from "../../utils/productUtils";
 
-export const Card = (product, removeFromWishlist) => {
+export const Card = (product) => {
   const { _id, name, price, marker, image, addedToWishlist, addedToCart } =
     product;
+
   let navigate = useNavigate();
   let location = useLocation();
 
-  const addToWishlist = () => {};
-  const addToCart = () => {};
+  const { cart, wishlist, productsList, productsDispatch, toastHandler } =
+    useStateContext();
 
   return (
     <div key={_id} className="card card-vertical">
@@ -25,12 +27,22 @@ export const Card = (product, removeFromWishlist) => {
 
         {location.pathname === "/wishlist" ? (
           <BsFillTrashFill
-            onClick={() => removeFromWishlist(product)}
+            onClick={() =>
+              removeFromWishlist(_id, productsDispatch, toastHandler)
+            }
             className="trash"
           />
         ) : (
           <FaHeart
-            onClick={() => addToWishlist(product)}
+            onClick={() =>
+              addToWishlist(
+                product,
+                productsDispatch,
+                toastHandler,
+                wishlist,
+                productsList
+              )
+            }
             className={`wishlist-icon-vert ${
               addedToWishlist ? "wishlisted" : ""
             }`}
@@ -51,9 +63,7 @@ export const Card = (product, removeFromWishlist) => {
         <div className="btn-container cta-btn">
           {!addedToCart ? (
             <button
-              onClick={() =>
-                addToCart(product)
-              }
+              onClick={() => addToCart(product)}
               className="btn btn-primary-solid"
             >
               Add to Cart

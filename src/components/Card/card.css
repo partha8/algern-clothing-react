@@ -47,6 +47,19 @@
   text-align: center;
 }
 
+.trash {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--clr-black);
+}
+
+.trash:hover {
+  color: var(--clr-red);
+}
+
 .wishlisted {
   color: var(--clr-red);
 }

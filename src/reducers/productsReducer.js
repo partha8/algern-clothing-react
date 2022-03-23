@@ -18,6 +18,12 @@ export const productsReducer = (state, action) => {
       };
     }
     
+    case "SET_WISHLIST": {
+      return {
+        ...state,
+        wishlist: action.payload,
+      };
+    }
     default:
       return state;
   }
