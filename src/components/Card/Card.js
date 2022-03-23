@@ -4,7 +4,11 @@ import { FaHeart } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./card.css";
-import { removeFromWishlist, addToWishlist,addToCart } from "../../utils/productUtils";
+import {
+  removeFromWishlist,
+  addToWishlist,
+  addToCart,
+} from "../../utils/productUtils";
 
 export const Card = (product) => {
   const { _id, name, price, marker, image, addedToWishlist, addedToCart } =

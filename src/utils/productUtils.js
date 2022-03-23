@@ -55,6 +55,8 @@ export const addToWishlist = async (
       console.log(error);
       toastHandler(true, "Error while adding item to wishlist", "error");
     }
+  } else {
+    removeFromWishlist(product._id, productsDispatch, toastHandler);
   }
 };
 
