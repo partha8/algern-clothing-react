@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Submenu, Toast } from "./components/index";
-import { Home, ProductListing, Profile, Wishlist } from "./pages";
+import { Home, ProductListing, Profile, Wishlist, Cart } from "./pages";
 import Mockman from "mockman-js";
 
 import { Login, SignUp } from "./pages/AuthPages/";
@@ -49,8 +49,15 @@ export const App = () => {
             </PrivateRoute>
           }
         />
-        {/* <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist" element={<Wishlist />} /> */}
+
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
         <Route path="/mock" element={<Mockman />} />
       </Routes>
     </>
