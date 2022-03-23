@@ -1,0 +1,28 @@
+.wishlist .cards {
+  padding: 0.5rem 3rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist .card {
+  box-shadow: var(--light-shadow);
+}
+
+.wishlisted {
+  color: var(--clr-red);
+}
+
+.cta-btn a {
+  background: var(--primary-color);
+}
+
+.cta-btn a:hover {
+  background: var(--primary-color-a5);
+}
+
+.cta-btn a:active {
+  background: var(--primary-color);
+}
