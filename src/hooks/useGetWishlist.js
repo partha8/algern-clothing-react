@@ -18,8 +18,6 @@ export const useGetWishlist = (wishlist) => {
               authorization: encodedToken,
             },
           });
-          console.log(response.status);
-          console.log(response.data);
           if (response.status === 200) {
             productsDispatch({
               type: "SET_WISHLIST",

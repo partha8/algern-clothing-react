@@ -17,11 +17,13 @@ export const Login = () => {
       setPerson({ email: "", password: "" });
     }
   };
+  
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, [name]: value });
   };
+
   return (
     <>
       <Navbar />
