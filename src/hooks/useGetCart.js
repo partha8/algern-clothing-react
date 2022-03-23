@@ -17,7 +17,7 @@ export const useGetCart = () => {
               authorization: encodedToken,
             },
           });
-          if (response.status === 200) {
+          if (response.status === 200 || response.status === 201) {
             productsDispatch({
               type: "SET_CART",
               payload: response.data.cart,

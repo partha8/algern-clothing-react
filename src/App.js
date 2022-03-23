@@ -12,7 +12,8 @@ import {
   useGetCategories,
   useGetProducts,
   useGetWishlist,
-  // useSignup,
+  useGetCart,
+  useSignup,
 } from "./hooks/";
 import { useAuthContext } from "./context/AuthProvider";
 
@@ -24,6 +25,7 @@ export const App = () => {
   useGetProducts();
   useGetCategories();
   useGetWishlist();
+  useGetCart();
   // useSignup();
   return (
     <>

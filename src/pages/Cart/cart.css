@@ -1,0 +1,274 @@
+strong {
+  font-weight: 900;
+}
+
+.cart {
+  font-family: sans-serif;
+  width: 85%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.cart .btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--font-color-light);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: opacity 0.3s;
+  border-radius: 0;
+}
+.cart .btn:hover {
+  opacity: 0.8;
+}
+
+.blue-link {
+  color: var(--clr-blue-primary);
+  cursor: pointer;
+}
+.blue-link:hover {
+  color: var(--primary-color);
+}
+
+/* cart header */
+.cart-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-header h3 {
+  line-height: 1;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* cart table */
+
+.cart-table {
+  padding: 10px 0 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.product-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.item-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* item block info -- contains img, prices and other info */
+.ib-info {
+  width: 60%;
+  display: flex;
+}
+
+.product-img {
+  width: 7rem;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.ib-info-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.ib-info span {
+  display: block;
+  margin-bottom: 3px;
+}
+
+span.title {
+  font-size: 1rem;
+}
+
+span.itemno {
+  font-size: 0.8rem;
+}
+
+span.styles {
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+  padding-left: 5px;
+  font-size: 0.8rem;
+}
+
+span.styles strong {
+  display: inline-block;
+  min-width: 70px;
+}
+
+span.styles .blue-link {
+  font-size: 0.8rem;
+}
+
+/* item block qty */
+
+.ib-qty-total-price {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.ib-qty {
+  text-align: right;
+  margin: 10px;
+  display: flex;
+}
+
+.qty{
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.ib-qty > .arrows {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.ib-qty input {
+  text-align: center;
+  outline: 0;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.price {
+  display: inline-block;
+  color: var(--font-color-tint2);
+}
+.price > span {
+  margin: 0 5px;
+}
+
+/* total price */
+
+.ib-total-price {
+  text-align: right;
+}
+
+.tp-price {
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.tp-remove {
+  font-size: 1rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.tp-remove:hover {
+  color: var(--clr-red);
+}
+
+@media (max-width: 800px) {
+  .ib-qty-total-price {
+    flex-direction: column;
+  }
+  .ib-total-price {
+    margin-top: auto;
+  }
+}
+/* item foot */
+
+.item-foot {
+  padding: 0 0 10px 0;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+.if-left {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Sub table */
+.sub-table {
+  margin: 20px 0 20px;
+  position: relative;
+}
+
+.summary-block {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sb-promo input {
+  font-size: 1rem;
+  width: 12rem;
+  padding: 7px;
+}
+
+.sb-promo .btn {
+  font-size: 0.8rem;
+}
+
+.summary-block ul li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  text-align: right;
+  display: flex;
+}
+
+.summary-block span {
+  display: inline-block;
+  margin-left: auto;
+}
+
+.sb-label {
+  color: var(--font-color-tint2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sb-value {
+  font-size: 1.1rem;
+  width: 7.5rem;
+}
+
+.grand-total {
+  border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.cart-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+}
+
+.cont-shopping {
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
