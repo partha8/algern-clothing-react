@@ -9,6 +9,8 @@ export const useGetCart = () => {
   const { userState } = useAuthContext();
   const { productsDispatch } = useStateContext();
   useEffect(() => {
+    console.log(userState._id);
+    console.log(encodedToken);
     if (userState._id) {
       (async () => {
         try {

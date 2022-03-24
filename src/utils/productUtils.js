@@ -1,5 +1,5 @@
 import axios from "axios";
-const encodedToken = localStorage.getItem("token");
+let encodedToken = localStorage.getItem("token");
 
 export const removeFromWishlist = async (
   id,
