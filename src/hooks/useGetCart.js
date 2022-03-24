@@ -6,10 +6,9 @@ import { useStateContext } from "../context/StateProvider";
 export const useGetCart = () => {
   const { userState } = useAuthContext();
   const { productsDispatch } = useStateContext();
-
-  const encodedToken = localStorage.getItem("token");
-
   useEffect(() => {
+    const encodedToken = localStorage.getItem("token");
+
     if (userState._id) {
       (async () => {
         try {
