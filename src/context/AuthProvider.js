@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const login = async ({ email, password }, toastHandler) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         authDispatch({
           type: "HANDLE_USER",
           payload: {
@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
     { firstName, lastName, email, password },
     toastHandler
   ) => {
+    console.log(firstName, lastName, email, password);
     try {
       const response = await axios.post("/api/auth/signup", {
         firstName,
@@ -62,13 +63,13 @@ export const AuthProvider = ({ children }) => {
         password,
       });
 
-      if (response.status === 201) {
+      if (response.status === 200 || response.status === 201) {
         const loginResp = await axios.post("api/auth/login", {
           email,
           password,
         });
 
-        if (loginResp.status === 200) {
+        if (loginResp.status === 200 || loginResp.status === 201) {
           authDispatch({
             type: "HANDLE_USER",
             payload: {
