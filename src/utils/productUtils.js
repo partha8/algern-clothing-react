@@ -31,6 +31,7 @@ export const addToWishlist = async (
   toastHandler,
   wishlist
 ) => {
+  console.log(encodedToken);
   const itemIndex = wishlist.findIndex((item) => item._id === product._id);
   if (itemIndex === -1) {
     try {
