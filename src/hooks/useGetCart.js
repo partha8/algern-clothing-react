@@ -3,11 +3,10 @@ import { useAuthContext } from "../context/AuthProvider";
 import axios from "axios";
 import { useStateContext } from "../context/StateProvider";
 
-const encodedToken = localStorage.getItem("token");
-
 export const useGetCart = () => {
   const { userState } = useAuthContext();
   const { productsDispatch } = useStateContext();
+  const encodedToken = localStorage.getItem("token");
   useEffect(() => {
     console.log(userState._id);
     console.log(encodedToken);
