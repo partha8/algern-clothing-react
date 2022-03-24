@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
       if (response.status === 200 || response.status === 201) {
+        localStorage.setItem("token", response.data.encodedToken);
         authDispatch({
           type: "HANDLE_USER",
           payload: {
@@ -33,10 +34,6 @@ export const AuthProvider = ({ children }) => {
           },
         });
 
-        localStorage.setItem(
-          "token",
-          JSON.stringify(response.data.encodedToken)
-        );
         toastHandler(
           true,
           `Welcome back ${response.data.foundUser.firstName}!`,
@@ -70,6 +67,8 @@ export const AuthProvider = ({ children }) => {
         });
 
         if (loginResp.status === 200 || loginResp.status === 201) {
+          console.log(loginResp.data.encodedToken);
+          localStorage.setItem("token", loginResp.data.encodedToken);
           authDispatch({
             type: "HANDLE_USER",
             payload: {
@@ -77,10 +76,6 @@ export const AuthProvider = ({ children }) => {
               encodedToken: loginResp.data.encodedToken,
             },
           });
-          localStorage.setItem(
-            "token",
-            JSON.stringify(loginResp.data.encodedToken)
-          );
           toastHandler(
             true,
             `Welcome ${firstName} to Algern Clothing!`,
