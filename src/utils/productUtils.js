@@ -1,11 +1,12 @@
 import axios from "axios";
-const encodedToken = localStorage.getItem("token");
 
 export const removeFromWishlist = async (
   id,
   productsDispatch,
   toastHandler
 ) => {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const response = await axios.delete(`/api/user/wishlist/${id}`, {
       headers: {
@@ -31,6 +32,8 @@ export const addToWishlist = async (
   toastHandler,
   wishlist
 ) => {
+  const encodedToken = localStorage.getItem("token");
+
   const itemIndex = wishlist.findIndex((item) => item._id === product._id);
   if (itemIndex === -1) {
     try {
@@ -65,6 +68,8 @@ export const addToCart = async (
   toastHandler,
   cart
 ) => {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const response = await axios.post(
       "/api/user/cart",
@@ -89,6 +94,8 @@ export const addToCart = async (
 };
 
 export const removeFromCart = async (id, productsDispatch, toastHandler) => {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
@@ -109,6 +116,8 @@ export const removeFromCart = async (id, productsDispatch, toastHandler) => {
 };
 
 export const increaseQty = async (id, productsDispatch, toastHandler) => {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const response = await axios.post(
       `/api/user/cart/${id}`,
@@ -135,6 +144,8 @@ export const increaseQty = async (id, productsDispatch, toastHandler) => {
 };
 
 export const decreaseQty = async (id, productsDispatch, toastHandler, qty) => {
+  const encodedToken = localStorage.getItem("token");
+
   if (qty === 1) {
     toastHandler(true, "can't go below 1", "error");
     return;
