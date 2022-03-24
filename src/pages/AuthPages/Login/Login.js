@@ -17,11 +17,15 @@ export const Login = () => {
       setPerson({ email: "", password: "" });
     }
   };
-  
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, [name]: value });
+  };
+
+  const guestLogin = () => {
+    setPerson({ email: "adarshbalika@gmail.com", password: "adarshbalika" });
   };
 
   return (
@@ -85,6 +89,9 @@ export const Login = () => {
             </Link>
 
             <button className="btn btn-form-action">Log In</button>
+            <button onClick={guestLogin} className="btn btn-form-action ">
+              Guest Login
+            </button>
           </form>
         </div>
       </section>
