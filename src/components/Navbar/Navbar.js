@@ -20,10 +20,10 @@ export const Navbar = ({ checkHome }) => {
           className="hamburger"
         />
         <div className="information">
-          <a href="...">
+          <a href="#">
             <button className="btn btn-link">Customer Service</button>
           </a>
-          <a href="...">
+          <a href="#">
             <button className="btn btn-link">Find a store</button>
           </a>
         </div>
