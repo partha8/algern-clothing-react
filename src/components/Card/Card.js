@@ -9,6 +9,7 @@ import {
   addToWishlist,
   addToCart,
 } from "../../utils/productUtils";
+import { useAuthContext } from "../../context/AuthProvider";
 
 export const Card = (product) => {
   const { _id, name, price, marker, image } = product;
@@ -16,8 +17,9 @@ export const Card = (product) => {
   let navigate = useNavigate();
   let location = useLocation();
 
-  const { cart, wishlist, productsList, productsDispatch, toastHandler } =
-    useStateContext();
+  const { cart, wishlist, productsDispatch, toastHandler } = useStateContext();
+
+  const { userState } = useAuthContext();
 
   const addedToWishlist = wishlist.findIndex((item) => item._id === _id);
 
@@ -41,9 +43,16 @@ export const Card = (product) => {
           />
         ) : (
           <FaHeart
-            onClick={() =>
-              addToWishlist(product, productsDispatch, toastHandler, wishlist)
-            }
+            onClick={() => {
+              userState._id
+                ? addToWishlist(
+                    product,
+                    productsDispatch,
+                    toastHandler,
+                    wishlist
+                  )
+                : toastHandler(true, "You need to login", "error");
+            }}
             className={`wishlist-icon-vert ${
               addedToWishlist === -1 ? "" : "wishlisted"
             }
@@ -65,9 +74,11 @@ export const Card = (product) => {
         <div className="btn-container cta-btn">
           {addedToCart === -1 ? (
             <button
-              onClick={() =>
-                addToCart(product, productsDispatch, toastHandler, cart)
-              }
+              onClick={() => {
+                userState._id
+                  ? addToCart(product, productsDispatch, toastHandler, cart)
+                  : toastHandler(true, "You need to login", "error");
+              }}
               className="btn btn-primary-solid"
             >
               Add to Cart
