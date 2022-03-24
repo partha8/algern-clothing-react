@@ -11,14 +11,17 @@ import {
 } from "../../utils/productUtils";
 
 export const Card = (product) => {
-  const { _id, name, price, marker, image, addedToWishlist, addedToCart } =
-    product;
+  const { _id, name, price, marker, image } = product;
 
   let navigate = useNavigate();
   let location = useLocation();
 
   const { cart, wishlist, productsList, productsDispatch, toastHandler } =
     useStateContext();
+
+  const addedToWishlist = wishlist.findIndex((item) => item._id === _id);
+
+  const addedToCart = cart.findIndex((item) => item._id === _id);
 
   return (
     <div key={_id} className="card card-vertical">
@@ -39,16 +42,11 @@ export const Card = (product) => {
         ) : (
           <FaHeart
             onClick={() =>
-              addToWishlist(
-                product,
-                productsDispatch,
-                toastHandler,
-                wishlist,
-                productsList
-              )
+              addToWishlist(product, productsDispatch, toastHandler, wishlist)
             }
             className={`wishlist-icon-vert ${
-              addedToWishlist ? "wishlisted" : ""
+              addedToWishlist === -1 ? "" : "wishlisted"
+            }
             }`}
           />
         )}
@@ -65,9 +63,11 @@ export const Card = (product) => {
           </p>
         </div>
         <div className="btn-container cta-btn">
-          {!addedToCart ? (
+          {addedToCart === -1 ? (
             <button
-              onClick={() => addToCart(product)}
+              onClick={() =>
+                addToCart(product, productsDispatch, toastHandler, cart)
+              }
               className="btn btn-primary-solid"
             >
               Add to Cart

@@ -43,7 +43,7 @@ export const Submenu = () => {
             <span
               className={` ${cart.length ? "badge icon-badge" : "hide-badge"}`}
             >
-              {cart.reduce((sum, curr) => sum + parseInt(curr.quantity, 10), 0)}
+              {cart.reduce((sum, curr) => sum + parseInt(curr.qty, 10), 0)}
             </span>
           </Link>
           <Link className="container-badge icon-container" to="/wishlist">

@@ -8,15 +8,8 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthProvider";
 
 export const Navbar = ({ checkHome }) => {
-  const {
-    setShowMenu,
-    cart,
-    wishlist,
-    categories,
-    filterDispatch,
-    productsList,
-    productsDispatch,
-  } = useStateContext();
+  const { setShowMenu, cart, wishlist, categories, filterDispatch } =
+    useStateContext();
 
   const { userState } = useAuthContext();
   return (
@@ -57,7 +50,7 @@ export const Navbar = ({ checkHome }) => {
             <span
               className={` ${cart.length ? "badge icon-badge" : "hide-badge"}`}
             >
-              {cart.reduce((sum, curr) => sum + parseInt(curr.quantity, 10), 0)}
+              {cart.reduce((sum, curr) => sum + parseInt(curr.qty, 10), 0)}
             </span>
           </Link>
           <Link className="container-badge icon-container" to="/wishlist">
@@ -74,10 +67,10 @@ export const Navbar = ({ checkHome }) => {
         </div>
       </div>
       <ul className="links-container">
-        {categories.map((item) => {
+        {categories.map((item, _id) => {
           const { categoryName } = item;
           return (
-            <li className="link-item">
+            <li key={_id} className="link-item">
               <Link
                 className="link"
                 to="/product-listing"
