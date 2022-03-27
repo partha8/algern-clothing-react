@@ -8,45 +8,56 @@ import { useStateContext } from "../../context/StateProvider";
 import { Link } from "react-router-dom";
 
 export const Submenu = () => {
-  const { showMenu, setShowMenu, cart, wishlist } = useStateContext();
+  const { showMenu, setShowMenu, cart, wishlist, categories, filterDispatch } =
+    useStateContext();
   return (
     <div className={`${showMenu ? "submenu-wrapper show" : "submenu-wrapper"}`}>
       <section className="submenu">
         <AiOutlineClose className="close" onClick={() => setShowMenu(false)} />
         <ul className="submenu-links">
-          <li>
-            <Link
-              onClick={() => setShowMenu(false)}
-              className="submenu-link"
-              to="/product-listing"
-            >
-              women
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => setShowMenu(false)}
-              className="submenu-link"
-              to="/product-listing"
-            >
-              men
-            </Link>
-          </li>
+          {categories.map((item, _id) => {
+            const { categoryName } = item;
+            return (
+              <li key={_id}>
+                <Link
+                  className="submenu-link"
+                  to="/product-listing"
+                  onClick={() => {
+                    filterDispatch({
+                      type: "SORT_BY_CATEGORY",
+                      payload: categoryName,
+                    });
+                    setShowMenu(false);
+                  }}
+                >
+                  {categoryName}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="submenu-items">
-          <Link to="/login">
+          <Link onClick={() => setShowMenu(false)} to="/login">
             <FaUserAlt />
           </Link>
-          <Link className="container-badge icon-container" to="/cart">
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="container-badge icon-container"
+            to="/cart"
+          >
             <FaShoppingBag />
             <span
               className={` ${cart.length ? "badge icon-badge" : "hide-badge"}`}
             >
-              {cart.reduce((sum, curr) => sum + parseInt(curr.qty, 10), 0)}
+              {cart.reduce((sum, curr) => sum + parseInt(curr.quantity, 10), 0)}
             </span>
           </Link>
-          <Link className="container-badge icon-container" to="/wishlist">
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="container-badge icon-container"
+            to="/wishlist"
+          >
             <FaHeart />
             <span
               className={` ${
@@ -56,7 +67,7 @@ export const Submenu = () => {
               {wishlist.length}
             </span>
           </Link>
-          <FaSearch />
+          <FaSearch onClick={() => setShowMenu(false)} />
         </div>
       </section>
     </div>
