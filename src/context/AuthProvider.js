@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { createContext, useContext } from "react";
 import { authReducer } from "../reducers/authReducer";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -20,6 +20,8 @@ export const AuthProvider = ({ children }) => {
 
   const [userState, authDispatch] = useReducer(authReducer, initalAuthState);
   let navigate = useNavigate();
+  let location = useLocation();
+  const from = location.state?.from.pathname || "/profile";
 
   const login = async ({ email, password }, toastHandler) => {
     try {
@@ -42,7 +44,7 @@ export const AuthProvider = ({ children }) => {
           `Welcome back ${response.data.foundUser.firstName}!`,
           "success"
         );
-        navigate("/profile");
+        navigate(from, { replace: true });
       }
     } catch (error) {
       toastHandler(true, "Error, check console", "error");
