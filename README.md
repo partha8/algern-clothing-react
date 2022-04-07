@@ -92,7 +92,7 @@
 ```
 git clone https://github.com/partha8/algern-clothing-react.git
 
-cd react-Inclusive-Mart
+cd algern-clothing-react
 ```
 
 - install dependencies (if you are using **yarn** then do with that)
