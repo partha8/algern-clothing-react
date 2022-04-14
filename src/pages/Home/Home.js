@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Footer } from "../../components";
+import { useStateContext } from "../../context/StateProvider";
 
 import "./home.css";
 
 export const Home = () => {
+  const { filterDispatch } = useStateContext();
   return (
     <>
       <div className="parallax-wrapper">
@@ -33,7 +35,16 @@ export const Home = () => {
           </section>
 
           <section className="collection-container">
-            <Link className="collection" to="/product-listing">
+            <Link
+              className="collection"
+              to="/product-listing"
+              onClick={() =>
+                filterDispatch({
+                  type: "SORT_BY_CATEGORY",
+                  payload: "women",
+                })
+              }
+            >
               {" "}
               <img
                 className="collection-img"
@@ -44,7 +55,16 @@ export const Home = () => {
                 women <br /> apparels
               </h1>
             </Link>
-            <Link to="/product-listing" className="collection">
+            <Link
+              to="/product-listing"
+              onClick={() =>
+                filterDispatch({
+                  type: "SORT_BY_CATEGORY",
+                  payload: "men",
+                })
+              }
+              className="collection"
+            >
               <img
                 className="collection-img"
                 src="https://images.pexels.com/photos/9208222/pexels-photo-9208222.jpeg?cs=srgb&dl=pexels-cottonbro-9208222.jpg&fm=jpg"
@@ -52,16 +72,6 @@ export const Home = () => {
               />
               <h1 className="collection-title">
                 men <br /> apparels
-              </h1>
-            </Link>
-            <Link to="/product-listing" className="collection">
-              <img
-                className="collection-img"
-                src="https://images.pexels.com/photos/6147408/pexels-photo-6147408.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="new outerwear"
-              />
-              <h1 className="collection-title">
-                new outerwear <br /> collection
               </h1>
             </Link>
           </section>

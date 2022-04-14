@@ -9,6 +9,8 @@ export const Filters = () => {
     productTypesArray,
     ratingInput,
     sortByPrice,
+    categories,
+    sortByCategory,
   } = useStateContext();
 
   const productTypes = [
@@ -37,6 +39,30 @@ export const Filters = () => {
         </span>
       </div>
       <ul>
+        <li className=" filter-type">
+          <p className="filter-type-title">Categories </p>
+          <form className="sub-categories">
+            {categories.map((category) => {
+              const { categoryName } = category;
+              return (
+                <label className="category">
+                  <input
+                    onClick={() =>
+                      filterDispatch({
+                        type: "SORT_BY_CATEGORY",
+                        payload: categoryName,
+                      })
+                    }
+                    type="radio"
+                    checked={sortByCategory && sortByCategory === categoryName}
+                  />
+                  {categoryName}
+                </label>
+              );
+            })}
+          </form>
+        </li>
+
         <li className=" filter-type">
           <p className="filter-type-title">Collection </p>
           <form className="sub-categories">
