@@ -1,7 +1,7 @@
 <h1 align="center">Algern Clothing</h1>
 
 <p align="center">
-  Algern Clothing is an e-commerce platform which focuses in stylish and luxury clothing.
+  Algern Clothing is an e-commerce platform that focuses on stylish and luxury clothing.
   <br>
   <a target="__blank" href="https://algern-clothing-react.netlify.app/"><strong>To the site.</strong></a>
   <br>
