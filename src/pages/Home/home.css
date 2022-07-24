@@ -6,22 +6,6 @@
   object-position: top;
 }
 
-/* .btn-container-hero {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: transparent;
-  }
-  
-  .btn-hero {
-    color: var(--font-color-light);
-    font-weight: 600;
-    background: var(--primary-color-a5);
-    transition: var(--transition-one);
-    margin-left: 10px;
-  } */
-
 .hero-text {
   color: var(--font-color-light);
   font-size: calc(8vw + 0.5rem);

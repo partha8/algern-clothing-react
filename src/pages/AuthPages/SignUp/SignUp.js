@@ -71,87 +71,78 @@ export const SignUp = () => {
 
           <form className="auth-form" onSubmit={signupHandler}>
             <div>
-              <div>
-                <label className="auth-label" for="first-name">
-                  First Name<span className="req">*</span>
-                </label>
-                <input
-                  className="auth-input"
-                  id="first-name"
-                  type="text"
-                  required
-                  autoComplete="off"
-                  value={person.firstName}
-                  name="firstName"
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label className="auth-label" for="last-name">
-                  Last Name<span className="req">*</span>
-                </label>
-                <input
-                  className="auth-input"
-                  id="last-name"
-                  type="text"
-                  required
-                  autoComplete="off"
-                  value={person.lastName}
-                  name="lastName"
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="auth-label" for="email">
-                Email Address<span className="req">*</span>
+              <label className="auth-label" for="first-name">
+                First Name<span className="req">*</span>
               </label>
               <input
                 className="auth-input"
-                id="email"
-                type="email"
+                id="first-name"
+                type="text"
                 required
                 autoComplete="off"
-                value={person.email}
-                name="email"
+                value={person.firstName}
+                name="firstName"
+                onChange={handleChange}
+              />
+
+              <label className="auth-label" for="last-name">
+                Last Name<span className="req">*</span>
+              </label>
+              <input
+                className="auth-input"
+                id="last-name"
+                type="text"
+                required
+                autoComplete="off"
+                value={person.lastName}
+                name="lastName"
                 onChange={handleChange}
               />
             </div>
 
-            <div>
-              <label className="auth-label" for="set-password">
-                Set A Password<span className="req">*</span>
-              </label>
-              <input
-                className="auth-input"
-                id="set-password"
-                type="password"
-                required
-                autoComplete="off"
-                value={person.password}
-                name="password"
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label className="auth-label" for="confirm-password">
-                Confirm Password<span className="req">*</span>
-              </label>
-              <input
-                className="auth-input"
-                id="confirm-password"
-                type="password"
-                required
-                autoComplete="off"
-                value={person.confirmPassword}
-                name="confirmPassword"
-                onChange={handleChange}
-              />
-              <span>{error}</span>
-            </div>
+            <label className="auth-label" for="email">
+              Email Address<span className="req">*</span>
+            </label>
+            <input
+              className="auth-input"
+              id="email"
+              type="email"
+              required
+              autoComplete="off"
+              value={person.email}
+              name="email"
+              onChange={handleChange}
+            />
 
+            <label className="auth-label" for="set-password">
+              Set A Password<span className="req">*</span>
+            </label>
+            <input
+              className="auth-input"
+              id="set-password"
+              type="password"
+              required
+              autoComplete="off"
+              value={person.password}
+              name="password"
+              onChange={handleChange}
+            />
+
+            <label className="auth-label" for="confirm-password">
+              Confirm Password<span className="req">*</span>
+            </label>
+            <input
+              className="auth-input"
+              id="confirm-password"
+              type="password"
+              required
+              autoComplete="off"
+              value={person.confirmPassword}
+              name="confirmPassword"
+              onChange={handleChange}
+            />
+            <span>{error}</span>
+            
             <button type="submit" className="btn btn-form-action">
               Get Started
             </button>

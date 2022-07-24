@@ -20,6 +20,7 @@ export const Cart = () => {
           <h3>Items in Your Cart</h3>
           <span className="btn">Checkout</span>
         </header>
+
         <div className="cart-table">
           <ul>
             {cart.map((item) => {
@@ -47,6 +48,7 @@ export const Cart = () => {
                         </span>
                       </div>
                     </div>
+
                     <div className="item-block ib-qty-total-price">
                       <div className="ib-qty">
                         <span className="qty">{qty}</span>
