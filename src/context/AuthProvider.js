@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 import { authReducer } from "../reducers/authReducer";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/constants";
 
 const AuthContext = createContext();
 
@@ -25,7 +26,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async ({ email, password }, toastHandler) => {
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
+      const response = await axios.post(`${API_URL}/auth/login`, {
+        email,
+        password,
+      });
       if (response.status === 200 || response.status === 201) {
         authDispatch({
           type: "HANDLE_USER",
@@ -56,9 +60,8 @@ export const AuthProvider = ({ children }) => {
     { firstName, lastName, email, password },
     toastHandler
   ) => {
-    console.log(firstName, lastName, email, password);
     try {
-      const response = await axios.post("/api/auth/signup", {
+      const response = await axios.post(`${API_URL}/auth/signup`, {
         firstName,
         lastName,
         email,
@@ -66,7 +69,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (response.status === 200 || response.status === 201) {
-        const loginResp = await axios.post("api/auth/login", {
+        const loginResp = await axios.post(`${API_URL}/auth/login`, {
           email,
           password,
         });

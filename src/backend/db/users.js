@@ -15,5 +15,13 @@ export const users = [
     password: "parthasarma",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    addresses: [
+      {
+        _id: uuid(),
+        name:"Partha Sarma",
+        mobile:'9999999991',
+        
+      },
+    ],
   },
 ];

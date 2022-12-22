@@ -3,11 +3,7 @@ import { Navbar } from "../../components";
 import { useStateContext } from "../../context/StateProvider";
 import "./cart.css";
 import { BsFillTrashFill } from "react-icons/bs";
-import {
-  removeFromCart,
-  increaseQty,
-  decreaseQty,
-} from "../../utils/productUtils";
+import { updateCart } from "../../utils/productUtils";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export const Cart = () => {
@@ -24,19 +20,20 @@ export const Cart = () => {
         <div className="cart-table">
           <ul>
             {cart.map((item) => {
-              const { name, price, size, color, id, image, qty, _id } = item;
+              const { name, price, size, color, id, image, qty, _id } =
+                item.productId;
               return (
                 <li className="product-item">
                   <div className="item-main">
                     <div className="item-block ib-info">
                       <img
                         className=" responsive-image product-img"
-                        src={image.src}
-                        alt={image.alt}
+                        src={image}
+                        alt={name}
                       />
                       <div className="ib-info-meta">
                         <span className="title">{name}</span>
-                        <span className="itemno quiet">#{id}</span>
+                        <span className="itemno quiet">#{_id}</span>
                         <span className="styles">
                           <span>
                             <strong>Color</strong>: {color}
@@ -51,20 +48,25 @@ export const Cart = () => {
 
                     <div className="item-block ib-qty-total-price">
                       <div className="ib-qty">
-                        <span className="qty">{qty}</span>
+                        <span className="qty">{item.quantity}</span>
                         <span className="arrows">
                           <AiOutlineArrowUp
                             onClick={() =>
-                              increaseQty(_id, productsDispatch, toastHandler)
+                              updateCart(
+                                _id,
+                                productsDispatch,
+                                toastHandler,
+                                "increment"
+                              )
                             }
                           />
                           <AiOutlineArrowDown
                             onClick={() =>
-                              decreaseQty(
+                              updateCart(
                                 _id,
                                 productsDispatch,
                                 toastHandler,
-                                qty
+                                "decrement"
                               )
                             }
                           />
@@ -75,15 +77,13 @@ export const Cart = () => {
                       </div>
 
                       <div className="ib-total-price">
-                        <span className="tp-price">Rs.{qty * price}</span>
+                        <span className="tp-price">
+                          Rs.{item.quantity * price}
+                        </span>
                         <span className="tp-remove">
                           <BsFillTrashFill
                             onClick={() =>
-                              removeFromCart(
-                                _id,
-                                productsDispatch,
-                                toastHandler
-                              )
+                              updateCart(_id, productsDispatch, toastHandler)
                             }
                           />
                         </span>

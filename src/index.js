@@ -8,7 +8,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Call make Server
-makeServer();
+// makeServer();
 // useSignupHandler()
 
 ReactDOM.render(

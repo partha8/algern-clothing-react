@@ -13,11 +13,7 @@ export const Home = () => {
         <Navbar checkHome={"/"} />
         <header className="parallax-group header">
           <header className="parallax-layer base-layer">
-            <img
-              className=" hero-img"
-              src="https://images.pexels.com/photos/10675899/pexels-photo-10675899.jpeg?cs=srgb&dl=pexels-cottonbro-10675899.jpg&fm=jpg"
-              alt="hero"
-            />
+            <img className=" hero-img" src="/header.jpg" alt="hero" />
           </header>
           <h1 className="hero-text parallax-layer mid-layer">
             Style is forever
@@ -48,7 +44,7 @@ export const Home = () => {
               {" "}
               <img
                 className="collection-img"
-                src="https://images.pexels.com/photos/3151296/pexels-photo-3151296.jpeg?cs=srgb&dl=pexels-marlon-schmeiski-3151296.jpg&fm=jpg"
+                src="/women.jpg"
                 alt="women apparels"
               />
               <h1 className="collection-title">
@@ -67,7 +63,7 @@ export const Home = () => {
             >
               <img
                 className="collection-img"
-                src="https://images.pexels.com/photos/9208222/pexels-photo-9208222.jpeg?cs=srgb&dl=pexels-cottonbro-9208222.jpg&fm=jpg"
+                src="/men.jpg"
                 alt="men apparels"
               />
               <h1 className="collection-title">

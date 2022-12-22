@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuthContext } from "../context/AuthProvider";
 import axios from "axios";
 import { useStateContext } from "../context/StateProvider";
+import { API_URL } from "../utils/constants";
 
 export const useGetWishlist = () => {
   const { userState } = useAuthContext();
@@ -12,7 +13,7 @@ export const useGetWishlist = () => {
     if (userState._id) {
       (async () => {
         try {
-          const response = await axios.get("/api/user/wishlist", {
+          const response = await axios.get(`${API_URL}/wishlist`, {
             headers: {
               authorization: encodedToken,
             },

@@ -8,6 +8,8 @@ import {
   removeFromWishlist,
   addToWishlist,
   addToCart,
+  updateWishlist,
+  updateCart,
 } from "../../utils/productUtils";
 import { useAuthContext } from "../../context/AuthProvider";
 
@@ -23,34 +25,27 @@ export const Card = (product) => {
 
   const addedToWishlist = wishlist.findIndex((item) => item._id === _id);
 
-  const addedToCart = cart.findIndex((item) => item._id === _id);
+  const addedToCart = cart.findIndex((item) => item.productId._id === _id);
 
   return (
     <div key={_id} className="card card-vertical">
       <div className="image-container-vert">
         <img
           className="img responsive-image product-image"
-          src={image.src}
-          alt={image.alt}
+          src={image}
+          alt={name}
         />
 
         {location.pathname === "/wishlist" ? (
           <BsFillTrashFill
-            onClick={() =>
-              removeFromWishlist(_id, productsDispatch, toastHandler)
-            }
+            onClick={() => updateWishlist(_id, productsDispatch, toastHandler)}
             className="trash"
           />
         ) : (
           <FaHeart
             onClick={() => {
               userState._id
-                ? addToWishlist(
-                    product,
-                    productsDispatch,
-                    toastHandler,
-                    wishlist
-                  )
+                ? updateWishlist(_id, productsDispatch, toastHandler)
                 : toastHandler(true, "You need to login", "error");
             }}
             className={`wishlist-icon-vert ${
@@ -76,7 +71,7 @@ export const Card = (product) => {
             <button
               onClick={() => {
                 userState._id
-                  ? addToCart(product, productsDispatch, toastHandler, cart)
+                  ? updateCart(_id, productsDispatch, toastHandler)
                   : toastHandler(true, "You need to login", "error");
               }}
               className="btn btn-primary-solid"

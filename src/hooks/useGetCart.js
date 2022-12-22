@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { useAuthContext } from "../context/AuthProvider";
 import axios from "axios";
 import { useStateContext } from "../context/StateProvider";
+import { API_URL } from "../utils/constants";
 
 export const useGetCart = () => {
   const { userState } = useAuthContext();
   const { productsDispatch } = useStateContext();
   useEffect(() => {
     const encodedToken = localStorage.getItem("token");
-
     if (userState._id) {
       (async () => {
         try {
-          const response = await axios.get("/api/user/cart", {
+          const response = await axios.get(`${API_URL}/cart`, {
             headers: {
               authorization: encodedToken,
             },

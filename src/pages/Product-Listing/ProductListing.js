@@ -5,13 +5,15 @@ import { Filters } from "./Filters/Filters";
 import "./product-listing.css";
 import { Card } from "../../components";
 
-import { useFilteredProducts } from "../../hooks/useFilteredProducts";
+import { useFilteredProducts, useGetProducts } from "../../hooks";
 import { useLocation } from "react-router-dom";
 
 export const ProductListing = () => {
   const { productsList } = useStateContext();
   const filteredData = useFilteredProducts(productsList);
-  
+
+  useGetProducts();
+
   return (
     <>
       <Navbar />
