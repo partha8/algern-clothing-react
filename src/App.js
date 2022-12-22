@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Submenu, Toast } from "./components/index";
 import { Home, ProductListing, Profile, Wishlist, Cart } from "./pages";
@@ -9,47 +9,22 @@ import { useStateContext } from "./context/StateProvider";
 
 import {
   useGetCategories,
-  useGetProducts,
   useGetWishlist,
   useGetCart,
+  useGetUser,
 } from "./hooks/";
 import { useAuthContext } from "./context/AuthProvider";
 
 import { PrivateRoute } from "./routes/PrivateRoute";
 
-import { API_URL } from "./utils/constants";
-import axios from "axios";
-
 export const App = () => {
   const { toast } = useStateContext();
-  const { userState, authDispatch } = useAuthContext();
-  // useGetProducts();
+  const { userState } = useAuthContext();
   useGetCategories();
   useGetWishlist();
   useGetCart();
+  useGetUser();
 
-  useEffect(() => {
-    const encodedToken = localStorage.getItem("token");
-    if (encodedToken) {
-      (async () => {
-        try {
-          const res = await axios.get(`${API_URL}/user`, {
-            headers: {
-              authorization: encodedToken,
-            },
-          });
-
-          authDispatch({
-            type: "HANDLE_USER",
-            payload: {
-              user: res.data.foundUser,
-              encodedToken: res.data.encodedToken,
-            },
-          });
-        } catch (error) {}
-      })();
-    }
-  }, []);
   return (
     <>
       <Submenu />
