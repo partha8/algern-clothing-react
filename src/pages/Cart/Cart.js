@@ -132,7 +132,7 @@ export const Cart = () => {
                   <span className="sb-value">
                     Rs.
                     {cart.reduce((sum, curr) => {
-                      return sum + curr.qty * curr.price;
+                      return sum + curr.quantity * curr.productId.price;
                     }, 0)}{" "}
                   </span>
                 </li>
@@ -152,7 +152,7 @@ export const Cart = () => {
                   <span className="sb-value">
                     Rs.
                     {cart.reduce((sum, curr) => {
-                      return sum + curr.qty * curr.price;
+                      return sum + curr.quantity * curr.productId.price;
                     }, 0)}{" "}
                   </span>
                 </li>
