@@ -12,7 +12,6 @@ import {
   useGetProducts,
   useGetWishlist,
   useGetCart,
-  useSignup,
 } from "./hooks/";
 import { useAuthContext } from "./context/AuthProvider";
 
@@ -28,7 +27,6 @@ export const App = () => {
   useGetCategories();
   useGetWishlist();
   useGetCart();
-  // useSignup();
 
   useEffect(() => {
     const encodedToken = localStorage.getItem("token");
