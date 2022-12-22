@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useStateContext } from "../../context/StateProvider";
 import { FaHeart } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -8,6 +8,8 @@ import { updateWishlist, updateCart } from "../../utils/productUtils";
 import { useAuthContext } from "../../context/AuthProvider";
 
 import { toast } from "react-toastify";
+
+import { debounce } from "lodash";
 
 export const Card = (product) => {
   const { _id, name, price, marker, image } = product;
@@ -23,6 +25,24 @@ export const Card = (product) => {
 
   const addedToCart = cart.findIndex((item) => item.productId._id === _id);
 
+  const debouncedUpdateWishlist = useMemo(
+    () =>
+      debounce(
+        (_id, productsDispatch) => updateWishlist(_id, productsDispatch),
+        500
+      ),
+    []
+  );
+
+  const debouncedUpdateCart = useMemo(
+    () =>
+      debounce(
+        (_id, productsDispatch) => updateCart(_id, productsDispatch),
+        500
+      ),
+    []
+  );
+
   return (
     <div key={_id} className="card card-vertical">
       <div className="image-container-vert">
@@ -34,14 +54,14 @@ export const Card = (product) => {
 
         {location.pathname === "/wishlist" ? (
           <BsFillTrashFill
-            onClick={() => updateWishlist(_id, productsDispatch)}
+            onClick={() => debouncedUpdateWishlist(_id, productsDispatch)}
             className="trash"
           />
         ) : (
           <FaHeart
             onClick={() => {
               userState._id
-                ? updateWishlist(_id, productsDispatch)
+                ? debouncedUpdateWishlist(_id, productsDispatch)
                 : toast.info("You need to login first");
             }}
             className={`wishlist-icon-vert ${
@@ -67,7 +87,7 @@ export const Card = (product) => {
             <button
               onClick={() => {
                 userState._id
-                  ? updateCart(_id, productsDispatch)
+                  ? debouncedUpdateCart(_id, productsDispatch)
                   : toast.info("You need to login first");
               }}
               className="btn btn-primary-solid"

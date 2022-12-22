@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Navbar } from "../../components";
 import { useStateContext } from "../../context/StateProvider";
 import "./cart.css";
 import { BsFillTrashFill } from "react-icons/bs";
 import { updateCart } from "../../utils/productUtils";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
+import { debounce } from "lodash";
 
 export const Cart = () => {
   const { cart, productsDispatch } = useStateContext();
+  const debouncedUpdateCart = useMemo(
+    () =>
+      debounce(
+        (_id, productsDispatch, actionType) =>
+          updateCart(_id, productsDispatch, actionType),
+        500
+      ),
+    []
+  );
+
   return (
     <>
       <Navbar />
@@ -52,12 +63,20 @@ export const Cart = () => {
                         <span className="arrows">
                           <AiOutlineArrowUp
                             onClick={() =>
-                              updateCart(_id, productsDispatch, "increment")
+                              debouncedUpdateCart(
+                                _id,
+                                productsDispatch,
+                                "increment"
+                              )
                             }
                           />
                           <AiOutlineArrowDown
                             onClick={() =>
-                              updateCart(_id, productsDispatch, "decrement")
+                              debouncedUpdateCart(
+                                _id,
+                                productsDispatch,
+                                "decrement"
+                              )
                             }
                           />
                         </span>
