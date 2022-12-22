@@ -1,11 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Submenu, Toast } from "./components/index";
+import { Submenu} from "./components/index";
 import { Home, ProductListing, Profile, Wishlist, Cart } from "./pages";
 
 import { Login, SignUp } from "./pages/AuthPages/";
 
-import { useStateContext } from "./context/StateProvider";
 
 import {
   useGetCategories,
@@ -17,8 +16,10 @@ import { useAuthContext } from "./context/AuthProvider";
 
 import { PrivateRoute } from "./routes/PrivateRoute";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const App = () => {
-  const { toast } = useStateContext();
   const { userState } = useAuthContext();
   useGetCategories();
   useGetWishlist();
@@ -28,7 +29,17 @@ export const App = () => {
   return (
     <>
       <Submenu />
-      {toast.showToast && <Toast />}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/product-listing" element={<ProductListing />} />

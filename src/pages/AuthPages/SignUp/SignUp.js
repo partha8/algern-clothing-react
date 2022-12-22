@@ -6,7 +6,6 @@ import { useStateContext } from "../../../context/StateProvider";
 
 export const SignUp = () => {
   const { signup } = useAuthContext();
-  const { toastHandler } = useStateContext();
 
   const [person, setPerson] = useState({
     firstName: "",
@@ -26,7 +25,7 @@ export const SignUp = () => {
 
   const signupHandler = (e) => {
     e.preventDefault();
-    signup(person, toastHandler);
+    signup(person);
     setPerson({
       firstName: "",
       lastName: "",

@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useAuthContext } from "../context/AuthProvider";
 import axios from "axios";
-import { useStateContext } from "../context/StateProvider";
 import { API_URL } from "../utils/constants";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const useGetUser = () => {
-  const { toastHandler } = useStateContext();
   const { authDispatch } = useAuthContext();
   let navigate = useNavigate();
   let location = useLocation();
@@ -32,7 +31,7 @@ export const useGetUser = () => {
           });
           navigate(from, { replace: true });
         } catch (error) {
-          toastHandler(true, error.message, "error");
+          toast.error(error.message);
           console.error(error);
         }
       })();

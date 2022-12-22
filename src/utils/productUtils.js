@@ -1,10 +1,12 @@
 import axios from "axios";
 import { API_URL } from "./constants";
+import { toast } from "react-toastify";
 
-export const updateWishlist = async (id, productsDispatch, toastHandler) => {
+export const updateWishlist = async (id, productsDispatch) => {
   const encodedToken = localStorage.getItem("algern-clothing-token");
 
   try {
+    toast.info("Updating wishlist...");
     const response = await axios.post(
       `${API_URL}/wishlist`,
       {
@@ -21,23 +23,19 @@ export const updateWishlist = async (id, productsDispatch, toastHandler) => {
         type: "SET_WISHLIST",
         payload: response.data.wishlist,
       });
-      toastHandler(true, "wishlist updated!", "success");
+      toast.success("Wishlist updated!");
     }
   } catch (error) {
     console.log(error);
-    toastHandler(true, error.message, "error");
+    toast.error(error.message);
   }
 };
 
-export const updateCart = async (
-  id,
-  productsDispatch,
-  toastHandler,
-  actionType = null
-) => {
+export const updateCart = async (id, productsDispatch, actionType = null) => {
   const encodedToken = localStorage.getItem("algern-clothing-token");
 
   try {
+    toast.info("Updating cart...");
     const response = await axios.post(
       `${API_URL}/cart`,
       {
@@ -55,9 +53,9 @@ export const updateCart = async (
       }
     );
     productsDispatch({ type: "SET_CART", payload: response.data.cart });
-    toastHandler(true, "Cart updated!", "success");
+    toast.success("Cart updated!");
   } catch (error) {
     console.error(error);
-    toastHandler(true, error.message, "error");
+    toast.error(error.message);
   }
 };

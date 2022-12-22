@@ -9,17 +9,6 @@ const StateProvider = ({ children }) => {
   // for submenu, responsive navbar
   const [showMenu, setShowMenu] = useState(false);
 
-  // for toast
-  const [toast, setToast] = useState({
-    showToast: false,
-    message: "",
-    type: "",
-  });
-
-  const toastHandler = (showToast = false, message = "", type = "") => {
-    setToast({ showToast, message, type });
-  };
-
   // initial states for product related states
   const initialProductState = {
     cart: [],
@@ -58,12 +47,10 @@ const StateProvider = ({ children }) => {
         productTypesArray,
         ratingInput,
 
-        toast,
 
         setShowMenu,
         productsDispatch,
         filterDispatch,
-        toastHandler,
       }}
     >
       {children}

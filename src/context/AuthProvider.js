@@ -4,6 +4,7 @@ import { authReducer } from "../reducers/authReducer";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from "../utils/constants";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -24,12 +25,13 @@ export const AuthProvider = ({ children }) => {
   let location = useLocation();
   const from = location.state?.from.pathname || "/profile";
 
-  const login = async ({ email, password }, toastHandler) => {
+  const login = async ({ email, password }) => {
     try {
       const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
+      toast.info("Logging in, wait a few seconds");
       if (response.status === 200 || response.status === 201) {
         authDispatch({
           type: "HANDLE_USER",
@@ -43,23 +45,16 @@ export const AuthProvider = ({ children }) => {
           "algern-clothing-token",
           JSON.stringify(response.data.encodedToken)
         );
-        toastHandler(
-          true,
-          `Welcome back ${response.data.foundUser.firstName}!`,
-          "success"
-        );
+        toast.success(`Welcome back ${response.data.foundUser.firstName}!`);
         navigate(from, { replace: true });
       }
     } catch (error) {
-      toastHandler(true, "Error, check console", "error");
+      toast.error(error.message);
       console.error(error);
     }
   };
 
-  const signup = async (
-    { firstName, lastName, email, password },
-    toastHandler
-  ) => {
+  const signup = async ({ firstName, lastName, email, password }) => {
     try {
       const response = await axios.post(`${API_URL}/auth/signup`, {
         firstName,
@@ -67,6 +62,8 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
+
+      toast.info("Signing you up, wait a few seconds");
 
       if (response.status === 200 || response.status === 201) {
         const loginResp = await axios.post(`${API_URL}/auth/login`, {
@@ -86,16 +83,12 @@ export const AuthProvider = ({ children }) => {
             "algern-clothing-token",
             JSON.stringify(loginResp.data.encodedToken)
           );
-          toastHandler(
-            true,
-            `Welcome ${firstName} to Algern Clothing!`,
-            "success"
-          );
+          toast.success(`Welcome ${firstName} to Algern Clothing!`);
           navigate("/profile");
         }
       }
     } catch (error) {
-      toastHandler(true, "Error,check console", "error");
+      toast.error(error.message);
       console.error(error);
     }
   };

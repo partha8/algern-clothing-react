@@ -4,14 +4,10 @@ import { FaHeart } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./card.css";
-import {
-  removeFromWishlist,
-  addToWishlist,
-  addToCart,
-  updateWishlist,
-  updateCart,
-} from "../../utils/productUtils";
+import { updateWishlist, updateCart } from "../../utils/productUtils";
 import { useAuthContext } from "../../context/AuthProvider";
+
+import { toast } from "react-toastify";
 
 export const Card = (product) => {
   const { _id, name, price, marker, image } = product;
@@ -19,7 +15,7 @@ export const Card = (product) => {
   let navigate = useNavigate();
   let location = useLocation();
 
-  const { cart, wishlist, productsDispatch, toastHandler } = useStateContext();
+  const { cart, wishlist, productsDispatch } = useStateContext();
 
   const { userState } = useAuthContext();
 
@@ -38,15 +34,15 @@ export const Card = (product) => {
 
         {location.pathname === "/wishlist" ? (
           <BsFillTrashFill
-            onClick={() => updateWishlist(_id, productsDispatch, toastHandler)}
+            onClick={() => updateWishlist(_id, productsDispatch)}
             className="trash"
           />
         ) : (
           <FaHeart
             onClick={() => {
               userState._id
-                ? updateWishlist(_id, productsDispatch, toastHandler)
-                : toastHandler(true, "You need to login", "error");
+                ? updateWishlist(_id, productsDispatch)
+                : toast.info("You need to login first");
             }}
             className={`wishlist-icon-vert ${
               addedToWishlist === -1 ? "" : "wishlisted"
@@ -71,8 +67,8 @@ export const Card = (product) => {
             <button
               onClick={() => {
                 userState._id
-                  ? updateCart(_id, productsDispatch, toastHandler)
-                  : toastHandler(true, "You need to login", "error");
+                  ? updateCart(_id, productsDispatch)
+                  : toast.info("You need to login first");
               }}
               className="btn btn-primary-solid"
             >

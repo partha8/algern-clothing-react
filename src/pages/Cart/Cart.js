@@ -7,7 +7,7 @@ import { updateCart } from "../../utils/productUtils";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export const Cart = () => {
-  const { cart, productsDispatch, toastHandler } = useStateContext();
+  const { cart, productsDispatch } = useStateContext();
   return (
     <>
       <Navbar />
@@ -52,22 +52,12 @@ export const Cart = () => {
                         <span className="arrows">
                           <AiOutlineArrowUp
                             onClick={() =>
-                              updateCart(
-                                _id,
-                                productsDispatch,
-                                toastHandler,
-                                "increment"
-                              )
+                              updateCart(_id, productsDispatch, "increment")
                             }
                           />
                           <AiOutlineArrowDown
                             onClick={() =>
-                              updateCart(
-                                _id,
-                                productsDispatch,
-                                toastHandler,
-                                "decrement"
-                              )
+                              updateCart(_id, productsDispatch, "decrement")
                             }
                           />
                         </span>
@@ -82,9 +72,7 @@ export const Cart = () => {
                         </span>
                         <span className="tp-remove">
                           <BsFillTrashFill
-                            onClick={() =>
-                              updateCart(_id, productsDispatch, toastHandler)
-                            }
+                            onClick={() => updateCart(_id, productsDispatch)}
                           />
                         </span>
                       </div>

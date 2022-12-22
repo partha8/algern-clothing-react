@@ -8,12 +8,11 @@ export const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
 
   const { login } = useAuthContext();
-  const { toastHandler } = useStateContext();
 
   const loginHandler = (e) => {
     e.preventDefault();
     if (person.email && person.password) {
-      login(person, toastHandler);
+      login(person);
       setPerson({ email: "", password: "" });
     }
   };
