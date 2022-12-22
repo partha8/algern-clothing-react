@@ -10,12 +10,23 @@ export const Wishlist = () => {
     <div className="wishlist">
       <Navbar />
 
-      <h2 className="text-center">Wishlist</h2>
-      <div className="cards">
-        {wishlist.map((product) => {
-          return <Card key={product._id} {...product} />;
-        })}
-      </div>
+      {!wishlist.length && (
+        <div className="png-holder">
+          <img
+            src="/wishlist.png"
+            alt="wishlist empty"
+            className="png-placeholder"
+          />
+          <h2>Start adding items to your wishlist now!</h2>
+        </div>
+      )}
+      {wishlist.length && (
+        <div className="cards">
+          {wishlist.map((product) => {
+            return <Card key={product._id} {...product} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

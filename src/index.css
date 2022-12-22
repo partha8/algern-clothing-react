@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --primary-color: #1b1b1b;
   --font-color-light: var(--clr-grey-10);
@@ -41,4 +42,17 @@ body {
   background: var(--bg-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.png-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.png-placeholder {
+  width: 20rem;
+  object-fit: cover;
+  text-align: center;
 }
