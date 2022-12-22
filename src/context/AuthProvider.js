@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
         });
 
         localStorage.setItem(
-          "token",
+          "algern-clothing-token",
           JSON.stringify(response.data.encodedToken)
         );
         toastHandler(
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
             },
           });
           localStorage.setItem(
-            "token",
+            "algern-clothing-token",
             JSON.stringify(loginResp.data.encodedToken)
           );
           toastHandler(
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("algern-clothing-token");
     authDispatch({
       type: "HANDLE_USER",
       payload: {

@@ -13,7 +13,7 @@ export const useGetUser = () => {
   const from = location.state?.from.pathname || "/" || "/profile";
 
   useEffect(() => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("algern-clothing-token");
     if (encodedToken) {
       (async () => {
         try {

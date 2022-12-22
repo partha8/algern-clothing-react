@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_URL } from "./constants";
 
 export const updateWishlist = async (id, productsDispatch, toastHandler) => {
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("algern-clothing-token");
 
   try {
     const response = await axios.post(
@@ -35,7 +35,7 @@ export const updateCart = async (
   toastHandler,
   actionType = null
 ) => {
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("algern-clothing-token");
 
   try {
     const response = await axios.post(

@@ -9,7 +9,7 @@ export const useGetWishlist = () => {
   const { productsDispatch } = useStateContext();
 
   useEffect(() => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("algern-clothing-token");
     if (userState._id) {
       (async () => {
         try {
