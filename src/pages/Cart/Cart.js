@@ -164,6 +164,7 @@ export const Cart = () => {
             <span className="cont-shopping">
               <i className="bx bx-chevron-left"></i>Continue Shopping
             </span>
+            {/* <Link></Link> */}
             <span className="btn">Checkout</span>
           </div>
         </div>

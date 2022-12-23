@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Navbar } from "../../../components";
 import { useAuthContext } from "../../../context/AuthProvider";
-import { useStateContext } from "../../../context/StateProvider";
 
 export const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
