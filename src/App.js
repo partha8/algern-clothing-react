@@ -1,10 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Submenu} from "./components/index";
+import { PageLoader, Submenu } from "./components/index";
 import { Home, ProductListing, Profile, Wishlist, Cart } from "./pages";
 
 import { Login, SignUp } from "./pages/AuthPages/";
-
 
 import {
   useGetCategories,
@@ -18,13 +17,21 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useStateContext } from "./context/StateProvider";
 
 export const App = () => {
   const { userState } = useAuthContext();
+  const { categories } = useStateContext();
   useGetCategories();
   useGetWishlist();
   useGetCart();
   useGetUser();
+
+  const encodedToken = localStorage.getItem("algern-clothing-token");
+
+  if (!categories.length || (encodedToken && !userState._id)) {
+    return <PageLoader />;
+  }
 
   return (
     <>

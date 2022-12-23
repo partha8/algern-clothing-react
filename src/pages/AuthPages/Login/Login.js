@@ -24,7 +24,7 @@ export const Login = () => {
   };
 
   const guestLogin = () => {
-    setPerson({ email: "partha@gmail.com", password: "parthasarma" });
+    setPerson({ email: "partha@gmail.com", password: "123456" });
   };
 
   return (

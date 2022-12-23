@@ -1,0 +1,60 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: #faf9f8;
+}
+
+.blue {
+    color: #1b1b1b;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.circle {
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 1px 1px #0000001a;
+    background: #faf9f8;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle h1 {
+    margin: 0;
+}
+
+.pulse {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(27, 27, 27, 0.5);
+        transform: scale(1);
+    }
+
+    100% {
+        box-shadow: 0 0 0 40px rgb(27, 27, 27, 0.2);
+        transform: scale(1.5);
+    }
+}
+
+.master {
+    color: black;
+    float: right;
+}
+
+@media (max-width: 900px) {
+    .master {
+        display: none;
+    }
+}
