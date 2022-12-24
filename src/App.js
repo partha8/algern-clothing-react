@@ -1,7 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { PageLoader, Submenu } from "./components/index";
-import { Home, ProductListing, Profile, Wishlist, Cart } from "./pages";
+import {
+  Home,
+  ProductListing,
+  Profile,
+  Wishlist,
+  Cart,
+  Address,
+} from "./pages";
 
 import { Login, SignUp } from "./pages/AuthPages/";
 
@@ -73,6 +80,15 @@ export const App = () => {
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/buy/address"
+          element={
+            <PrivateRoute>
+              <Address />
             </PrivateRoute>
           }
         />

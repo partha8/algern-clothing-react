@@ -3,7 +3,7 @@ import { Navbar } from "../../components";
 import { useStateContext } from "../../context/StateProvider";
 import "./cart.css";
 import { BsFillTrashFill } from "react-icons/bs";
-import { updateCart } from "../../utils/productUtils";
+import { updateCart, updateWishlist } from "../../utils/productUtils";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import { debounce } from "lodash";
 import { Link } from "react-router-dom";
@@ -15,6 +15,15 @@ export const Cart = () => {
       debounce(
         (_id, productsDispatch, actionType) =>
           updateCart(_id, productsDispatch, actionType),
+        500
+      ),
+    []
+  );
+
+  const debouncedUpdateWishlist = useMemo(
+    () =>
+      debounce(
+        (_id, productsDispatch) => updateWishlist(_id, productsDispatch),
         500
       ),
     []
@@ -35,7 +44,9 @@ export const Cart = () => {
         <div className="cart">
           <header className="cart-header">
             <h3>Items in Your Cart</h3>
-            <span className="btn">Checkout</span>
+            <Link to="/buy/address">
+              <span className="btn">Proceed to Buy</span>
+            </Link>
           </header>
 
           <div className="cart-table">
@@ -111,7 +122,15 @@ export const Cart = () => {
                       <div className="if-left">In Stock</div>
                       <div className="if-right">
                         <span className="blue-link">Gift Options</span> |{" "}
-                        <span className="blue-link">Add to Wishlist</span>
+                        <span
+                          onClick={() => {
+                            debouncedUpdateWishlist(_id, productsDispatch);
+                            debouncedUpdateCart(_id, productsDispatch);
+                          }}
+                          className="blue-link"
+                        >
+                          Add to Wishlist
+                        </span>
                       </div>
                     </div>
                   </li>
@@ -164,8 +183,9 @@ export const Cart = () => {
             <span className="cont-shopping">
               <i className="bx bx-chevron-left"></i>Continue Shopping
             </span>
-            {/* <Link></Link> */}
-            <span className="btn">Checkout</span>
+            <Link to="/buy/address">
+              <span className="btn">Proceed to Buy</span>
+            </Link>
           </div>
         </div>
       )}

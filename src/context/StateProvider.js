@@ -15,6 +15,7 @@ const StateProvider = ({ children }) => {
     wishlist: [],
     productsList: [],
     categories: [],
+    order: [],
   };
 
   // inital filter states
@@ -25,8 +26,10 @@ const StateProvider = ({ children }) => {
     ratingInput: 5,
   };
 
-  const [{ cart, wishlist, productsList, categories }, productsDispatch] =
-    useReducer(productsReducer, initialProductState);
+  const [
+    { cart, wishlist, productsList, categories, order },
+    productsDispatch,
+  ] = useReducer(productsReducer, initialProductState);
 
   const [
     { sortByPrice, sortByCategory, productTypesArray, ratingInput },
@@ -41,12 +44,12 @@ const StateProvider = ({ children }) => {
         wishlist,
         productsList,
         categories,
+        order,
 
         sortByPrice,
         sortByCategory,
         productTypesArray,
         ratingInput,
-
 
         setShowMenu,
         productsDispatch,

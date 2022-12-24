@@ -9,7 +9,8 @@ export const useGetUser = () => {
   const { authDispatch } = useAuthContext();
   let navigate = useNavigate();
   let location = useLocation();
-  const from = location.state?.from.pathname || "/" || "/profile";
+  const from =
+    location.state?.from.pathname || location.pathname || "/" || "/profile";
 
   useEffect(() => {
     const encodedToken = localStorage.getItem("algern-clothing-token");

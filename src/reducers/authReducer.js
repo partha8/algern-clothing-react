@@ -2,6 +2,7 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case "HANDLE_USER": {
       const { user, encodedToken } = action.payload;
+      console.log(user);
       return {
         ...state,
         _id: user._id,
@@ -12,6 +13,7 @@ export const authReducer = (state, action) => {
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
         encodedToken: encodedToken,
+        addresses: user.addresses,
       };
     }
     default:

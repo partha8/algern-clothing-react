@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
     password: null,
     createdAt: null,
     updatedAt: null,
+    addresses: [],
     encodedToken: null,
   };
 
