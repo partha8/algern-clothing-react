@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthProvider";
 import { useState, useReducer, useEffect } from "react";
@@ -11,7 +11,7 @@ import { useStateContext } from "../../context/StateProvider";
 
 export const Address = () => {
   const { userState, authDispatch } = useAuthContext();
-  const { order, productsDispatch } = useStateContext();
+  const { productsDispatch } = useStateContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -19,7 +19,7 @@ export const Address = () => {
   const [error, setError] = useState(false);
   const [formState, formDispatch] = useReducer(formReducer, initialState);
 
-  const editAddress = (_id) => {
+  const editAddress = (e, _id) => {
     const editAddress = userState.addresses.find(
       (address) => address._id === _id
     );
@@ -32,7 +32,7 @@ export const Address = () => {
     setIsModalOpen(true);
   };
 
-  const deleteAddress = async (_id) => {
+  const deleteAddress = async (e, _id) => {
     const body = {
       address: {
         _id,
@@ -61,7 +61,6 @@ export const Address = () => {
   };
 
   useEffect(() => {
-    console.log("inside useEffect");
     const timer = setTimeout(() => {
       setError(false);
     }, 4000);
@@ -69,98 +68,100 @@ export const Address = () => {
   }, [error]);
 
   return (
-    <>
+    <div className="address-page">
       <Navbar />
       <Link to="/cart">
         <h4 className="text-center">Go back to cart</h4>
       </Link>
-      <div className="addresses-container">
-        <div
-          onClick={() => {
-            setIsModalOpen(true);
-            formDispatch({ type: "CLEAR_FORM" });
-          }}
-          className="address-card add-address"
-        >
-          <FaPlus />
-          <h3>Add Address</h3>
-        </div>
-        {userState.addresses.map((address) => {
-          const {
-            _id,
-            name,
-            mobile,
-            pincode,
-            flat,
-            area,
-            landmark,
-            city,
-            state,
-          } = address;
-          return (
-            <div
-              onClick={() => setSelectedAddress(address)}
-              className={`address-card ${
-                selectedAddress && selectedAddress._id === _id
-                  ? "highlight"
-                  : ""
-              }`}
-              key={_id}
-            >
-              <h4>{name}</h4>
-              <p>
-                {flat}, {area}
-              </p>
-              <p>
-                {city}, {state} {pincode}
-              </p>
-              <p>Phone Number: {mobile}</p>
 
-              <div className="address-action-btns">
-                <button onClick={() => editAddress(_id)}>Edit</button>
-                <button onClick={() => deleteAddress(_id)}>Remove</button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="address-footer">
-        <h3 className="text-center">
-          {!error
-            ? "Select an address from above"
-            : "You must select an address!"}
-        </h3>
-        <Link className="address-action-btns" to="#">
-          <button
-            // disabled={!selectedAddress}
+      <div className="address-page">
+        <div className="addresses-container">
+          <div
             onClick={() => {
-              if (!selectedAddress) {
-                setError(true);
-              } else {
-                productsDispatch({
-                  type: "SET_ORDER",
-                  payload: {
-                    selectedAddress,
-                  },
-                });
-              }
+              setIsModalOpen(true);
+              formDispatch({ type: "CLEAR_FORM" });
             }}
+            className="address-card add-address"
           >
-            Proceed to Buy
-          </button>
-        </Link>
-      </div>
-      {isModalOpen && (
-        <AddressModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          formState={formState}
-          formDispatch={formDispatch}
-          submitHandler={submitHandler}
-        />
-      )}
+            <FaPlus />
+            <h3>Add Address</h3>
+          </div>
+          {userState.addresses.map((address) => {
+            const {
+              _id,
+              name,
+              mobile,
+              pincode,
+              flat,
+              area,
+              landmark,
+              city,
+              state,
+            } = address;
+            return (
+              <div
+                onClick={() => setSelectedAddress(address)}
+                className={`address-card ${
+                  selectedAddress && selectedAddress._id === _id
+                    ? "highlight"
+                    : ""
+                }`}
+                key={_id}
+              >
+                <h4>{name}</h4>
+                <p>
+                  {flat}, {area}
+                </p>
+                <p>
+                  {city}, {state} {pincode}
+                </p>
+                <p>Phone Number: {mobile}</p>
 
+                <div className="address-action-btns">
+                  <button onClick={(e) => editAddress(e, _id)}>Edit</button>
+                  <button onClick={(e) => deleteAddress(e, _id)}>Remove</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="address-footer">
+          <h3 className={`text-center ${error ? "error" : ""}`}>
+            {!error
+              ? "Select an address from above"
+              : "You must select an address!"}
+          </h3>
+          <Link className="address-action-btns" to="#">
+            <button
+              // disabled={!selectedAddress}
+              onClick={() => {
+                if (!selectedAddress) {
+                  setError(true);
+                } else {
+                  productsDispatch({
+                    type: "SET_ORDER",
+                    payload: {
+                      selectedAddress,
+                    },
+                  });
+                }
+              }}
+            >
+              Proceed to Buy
+            </button>
+          </Link>
+        </div>
+        {isModalOpen && (
+          <AddressModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            formState={formState}
+            formDispatch={formDispatch}
+            submitHandler={submitHandler}
+          />
+        )}
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };

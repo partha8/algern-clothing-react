@@ -1,3 +1,7 @@
+.address-page {
+    min-height: 100vh;
+}
+
 .address-form {
     display: flex;
     flex-direction: column;
@@ -14,7 +18,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, 19rem);
-    /* grid-auto-rows: 16.5rem; */
+    grid-auto-rows: auto;
     justify-content: center;
     gap: 1.5rem;
 }
