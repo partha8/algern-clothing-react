@@ -4,3 +4,5 @@ export { Profile } from "./Profile/Profile";
 export { Wishlist } from "./Wishlist/Wishlist";
 export { Cart } from "./Cart/Cart";
 export { Address } from "./Address/Address";
+export { SuccessfulPayment } from "./SuccessfulPayment/SuccessfulPayment";
+export { DeclinedPayment } from "./DeclinedPayment/DeclinedPayment";

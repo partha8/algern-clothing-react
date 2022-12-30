@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthProvider";
 import { useState, useReducer, useEffect } from "react";
@@ -8,10 +8,13 @@ import { Footer, Navbar } from "../../components";
 import { AddressModal } from "./AddressModal";
 import { updateAddress } from "../../utils/userUtils";
 import { useStateContext } from "../../context/StateProvider";
+import axios from "axios";
+import { API_URL } from "../../utils/constants";
+import { toast } from "react-toastify";
 
 export const Address = () => {
   const { userState, authDispatch } = useAuthContext();
-  const { productsDispatch } = useStateContext();
+  const { productsDispatch, order, cart } = useStateContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -19,6 +22,8 @@ export const Address = () => {
   const [error, setError] = useState(false);
   const [formState, formDispatch] = useReducer(formReducer, initialState);
 
+  console.log(order);
+  const [reviewRedirect, setReviewRedirect] = useState("#");
   const editAddress = (e, _id) => {
     const editAddress = userState.addresses.find(
       (address) => address._id === _id
@@ -67,8 +72,30 @@ export const Address = () => {
     return () => clearTimeout(timer);
   }, [error]);
 
+  const createCheckoutSession = async () => {
+    try {
+      const res = await axios.post(
+        // "http://localhost:5000/order/create-checkout-session",
+        `${API_URL}/order/create-checkout-session`,
+        {
+          order,
+        },
+        {
+          headers: {
+            authorization: localStorage.getItem("algern-clothing-token"),
+          },
+        }
+      );
+
+      const url = res.data.url;
+      window.location = url;
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
-    <div className="address-page">
+    <div>
       <Navbar />
       <Link to="/cart">
         <h4 className="text-center">Go back to cart</h4>
@@ -100,7 +127,16 @@ export const Address = () => {
             } = address;
             return (
               <div
-                onClick={() => setSelectedAddress(address)}
+                onClick={() => {
+                  setSelectedAddress(address);
+                  productsDispatch({
+                    type: "SET_ORDER",
+                    payload: {
+                      items: [...cart],
+                      selectedAddress: address,
+                    },
+                  });
+                }}
                 className={`address-card ${
                   selectedAddress && selectedAddress._id === _id
                     ? "highlight"
@@ -131,12 +167,14 @@ export const Address = () => {
               ? "Select an address from above"
               : "You must select an address!"}
           </h3>
-          <Link className="address-action-btns" to="#">
+
+          {/* <Link className="address-action-btns" to={`${reviewRedirect}`}>
             <button
               // disabled={!selectedAddress}
               onClick={() => {
                 if (!selectedAddress) {
                   setError(true);
+                  setReviewRedirect("#");
                 } else {
                   productsDispatch({
                     type: "SET_ORDER",
@@ -144,12 +182,36 @@ export const Address = () => {
                       selectedAddress,
                     },
                   });
+                  setReviewRedirect("/buy/review");
                 }
               }}
             >
               Proceed to Buy
             </button>
-          </Link>
+          </Link> */}
+
+          <button
+            className="address-action-btns"
+            // disabled={!selectedAddress}
+            onClick={() => {
+              if (!selectedAddress) {
+                setError(true);
+                setReviewRedirect("#");
+              } else {
+                productsDispatch({
+                  type: "SET_ORDER",
+                  payload: {
+                    items: [...cart],
+                    selectedAddress,
+                  },
+                });
+                createCheckoutSession(order);
+                setReviewRedirect("/buy/review");
+              }
+            }}
+          >
+            Proceed to Buy
+          </button>
         </div>
         {isModalOpen && (
           <AddressModal

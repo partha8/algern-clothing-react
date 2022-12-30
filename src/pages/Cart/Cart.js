@@ -44,7 +44,17 @@ export const Cart = () => {
         <div className="cart">
           <header className="cart-header">
             <h3>Items in Your Cart</h3>
-            <Link to="/buy/address">
+            <Link
+              onClick={() => {
+                productsDispatch({
+                  type: "SET_ORDER",
+                  payload: {
+                    items: [...cart],
+                  },
+                });
+              }}
+              to="/buy/address"
+            >
               <span className="btn">Proceed to Buy</span>
             </Link>
           </header>
@@ -183,7 +193,17 @@ export const Cart = () => {
             <span className="cont-shopping">
               <i className="bx bx-chevron-left"></i>Continue Shopping
             </span>
-            <Link to="/buy/address">
+            <Link
+              onClick={() => {
+                productsDispatch({
+                  type: "SET_ORDER",
+                  payload: {
+                    items: [...cart],
+                  },
+                });
+              }}
+              to="/buy/address"
+            >
               <span className="btn">Proceed to Buy</span>
             </Link>
           </div>

@@ -8,6 +8,8 @@ import {
   Wishlist,
   Cart,
   Address,
+  SuccessfulPayment,
+  DeclinedPayment,
 } from "./pages";
 
 import { Login, SignUp } from "./pages/AuthPages/";
@@ -89,6 +91,24 @@ export const App = () => {
           element={
             <PrivateRoute>
               <Address />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/success"
+          element={
+            <PrivateRoute>
+              <SuccessfulPayment />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/declined"
+          element={
+            <PrivateRoute>
+              <DeclinedPayment />
             </PrivateRoute>
           }
         />

@@ -16,6 +16,7 @@ const StateProvider = ({ children }) => {
     productsList: [],
     categories: [],
     order: [],
+    orders: [],
   };
 
   // inital filter states
@@ -27,7 +28,7 @@ const StateProvider = ({ children }) => {
   };
 
   const [
-    { cart, wishlist, productsList, categories, order },
+    { cart, wishlist, productsList, categories, order, orders },
     productsDispatch,
   ] = useReducer(productsReducer, initialProductState);
 
@@ -45,6 +46,7 @@ const StateProvider = ({ children }) => {
         productsList,
         categories,
         order,
+        orders,
 
         sortByPrice,
         sortByCategory,

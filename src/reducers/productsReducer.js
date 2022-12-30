@@ -34,7 +34,7 @@ export const productsReducer = (state, action) => {
     case "SET_ORDER": {
       return {
         ...state,
-        order: action.payload,
+        order: { ...state.order, ...action.payload },
       };
     }
     default:
