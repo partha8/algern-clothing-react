@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthProvider";
 import { useState, useReducer, useEffect } from "react";
@@ -22,8 +22,6 @@ export const Address = () => {
   const [error, setError] = useState(false);
   const [formState, formDispatch] = useReducer(formReducer, initialState);
 
-  console.log(order);
-  const [reviewRedirect, setReviewRedirect] = useState("#");
   const editAddress = (e, _id) => {
     const editAddress = userState.addresses.find(
       (address) => address._id === _id
@@ -75,7 +73,6 @@ export const Address = () => {
   const createCheckoutSession = async () => {
     try {
       const res = await axios.post(
-        // "http://localhost:5000/order/create-checkout-session",
         `${API_URL}/order/create-checkout-session`,
         {
           order,
@@ -114,17 +111,8 @@ export const Address = () => {
             <h3>Add Address</h3>
           </div>
           {userState.addresses.map((address) => {
-            const {
-              _id,
-              name,
-              mobile,
-              pincode,
-              flat,
-              area,
-              landmark,
-              city,
-              state,
-            } = address;
+            const { _id, name, mobile, pincode, flat, area, city, state } =
+              address;
             return (
               <div
                 onClick={() => {
@@ -168,35 +156,17 @@ export const Address = () => {
               : "You must select an address!"}
           </h3>
 
-          {/* <Link className="address-action-btns" to={`${reviewRedirect}`}>
-            <button
-              // disabled={!selectedAddress}
-              onClick={() => {
-                if (!selectedAddress) {
-                  setError(true);
-                  setReviewRedirect("#");
-                } else {
-                  productsDispatch({
-                    type: "SET_ORDER",
-                    payload: {
-                      selectedAddress,
-                    },
-                  });
-                  setReviewRedirect("/buy/review");
-                }
-              }}
-            >
-              Proceed to Buy
-            </button>
-          </Link> */}
-
           <button
-            className="address-action-btns"
-            // disabled={!selectedAddress}
+            style={{
+              background: "var(--primary-color)",
+              color: "var(--font-color-light)",
+              padding: "5px",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
             onClick={() => {
               if (!selectedAddress) {
                 setError(true);
-                setReviewRedirect("#");
               } else {
                 productsDispatch({
                   type: "SET_ORDER",
@@ -206,7 +176,6 @@ export const Address = () => {
                   },
                 });
                 createCheckoutSession(order);
-                setReviewRedirect("/buy/review");
               }
             }}
           >
