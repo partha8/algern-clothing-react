@@ -37,6 +37,13 @@ export const productsReducer = (state, action) => {
         order: { ...state.order, ...action.payload },
       };
     }
+
+    case "SET_ORDERS": {
+      return {
+        ...state,
+        orders: action.payload,
+      };
+    }
     default:
       return state;
   }

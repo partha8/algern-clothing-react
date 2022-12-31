@@ -59,3 +59,21 @@ export const updateCart = async (id, productsDispatch, actionType = null) => {
     toast.error(error.message);
   }
 };
+
+export const getOrders = async (productsDispatch) => {
+  const encodedToken = localStorage.getItem("algern-clothing-token");
+  try {
+    const response = await axios.get(`${API_URL}/order`, {
+      headers: {
+        authorization: encodedToken,
+      },
+    });
+
+    productsDispatch({
+      type: "SET_ORDERS",
+      payload: response.data.orders,
+    });
+  } catch (error) {
+    toast.error(error.message);
+  }
+};

@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthProvider";
 import { useState, useReducer, useEffect } from "react";
@@ -21,6 +21,8 @@ export const Address = () => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [error, setError] = useState(false);
   const [formState, formDispatch] = useReducer(formReducer, initialState);
+
+  const location = useLocation();
 
   const editAddress = (e, _id) => {
     const editAddress = userState.addresses.find(
@@ -93,12 +95,20 @@ export const Address = () => {
 
   return (
     <div>
-      <Navbar />
-      <Link to="/cart">
-        <h4 className="text-center">Go back to cart</h4>
-      </Link>
+      {location.pathname === "/buy/address" && (
+        <>
+          <Navbar />
+          <Link to="/cart">
+            <h4 className="text-center">Go back to cart</h4>
+          </Link>
+        </>
+      )}
 
-      <div className="address-page">
+      <div
+        className={`${
+          location.pathname === "/buy/address" ? "address-page" : ""
+        }`}
+      >
         <div className="addresses-container">
           <div
             onClick={() => {
@@ -192,7 +202,8 @@ export const Address = () => {
           />
         )}
       </div>
-      <Footer />
+
+      {location.pathname === "/buy/address" && <Footer />}
     </div>
   );
 };
