@@ -15,6 +15,9 @@
 
 ---
 
+## Note
+> For the backend, checkout this repo: [Algern Clothing Backend](https://github.com/partha8/algern-clothing-backend)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -24,7 +27,7 @@
 
 ---
 
-## Features It has
+## Features
 
 ### Categories
 
@@ -85,7 +88,7 @@
 
 ---
 
-## 🔌 Getting Started
+## Getting Started
 
 - clone the repository on your local machine with the command below in your terminal, and cd into the **algern-clothing-react** folder
 
