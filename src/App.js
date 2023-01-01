@@ -45,17 +45,20 @@ export const App = () => {
   return (
     <>
       <Submenu />
+
       <ToastContainer
-        position="top-right"
-        autoClose={3000}
+        position="bottom-right"
+        autoClose={5000}
         hideProgressBar={false}
-        newestOnTop
+        newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
+        pauseOnFocusLoss={false}
         draggable
-        pauseOnHover
+        pauseOnHover={false}
+        theme="light"
       />
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/product-listing" element={<ProductListing />} />
