@@ -68,6 +68,10 @@
     margin: 1rem auto;
 }
 
+.address-footer h5 {
+    margin: 0;
+}
+
 .highlight {
     border: 4px solid var(--primary-color);
 }
