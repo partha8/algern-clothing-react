@@ -50,7 +50,7 @@
   flex-direction: column;
   gap: 5px;
   padding: 8px;
-  border: 1px solid var(--primary-color );
+  border: 1px solid var(--primary-color);
 }
 
 .item-container p,

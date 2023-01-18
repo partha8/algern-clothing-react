@@ -75,7 +75,8 @@ export const Address = () => {
   const createCheckoutSession = async () => {
     try {
       const res = await axios.post(
-        `${API_URL}/order/create-checkout-session`,
+        // `${API_URL}/order/create-checkout-session`,
+        "http://localhost:5000/order/create-checkout-session",
         {
           order,
         },
@@ -191,6 +192,14 @@ export const Address = () => {
           >
             Proceed to Buy
           </button>
+
+          <h5 className="">
+            When testing interactively, use a card number, such as 4242 4242
+            4242 4242. Enter the card number in the Dashboard or in any payment
+            form. <br /> - Use a valid future date, such as 12/34.
+            <br /> - Use any three-digit CVC (four digits for American Express
+            cards). <br /> - Use any value you like for other form fields.
+          </h5>
         </div>
         {isModalOpen && (
           <AddressModal
