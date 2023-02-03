@@ -75,8 +75,8 @@ export const Address = () => {
   const createCheckoutSession = async () => {
     try {
       const res = await axios.post(
-        // `${API_URL}/order/create-checkout-session`,
-        "http://localhost:5000/order/create-checkout-session",
+        `${API_URL}/order/create-checkout-session`,
+        // "http://localhost:5000/order/create-checkout-session",
         {
           order,
         },
